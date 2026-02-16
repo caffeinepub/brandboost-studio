@@ -1,0 +1,423 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Busy AI core pages, shell, theme, animation, and simplified maker modules (frontend)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Create a responsive app shell with BrandBoost-inspired left sidebar navigation and routes for Chat, Photo/Video Maker, Business Analytics, Gallery, and Shop Maker.",
+      "acceptanceCriteria": [
+        "A persistent left sidebar is visible on desktop and collapses on small screens.",
+        "Sidebar contains nav items: Chat, Photo/Video Maker, Business Analytics, Gallery, Shop Maker.",
+        "Each nav item routes to a working page with a header/title matching the selected module."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add route structure and app-level layout wiring for Chat, Maker landing, Analytics, Gallery, and Shop Maker pages; ensure navigation is connected and responsive (desktop sidebar + mobile collapse)."
+        },
+        {
+          "path": "frontend/src/components/layout/AppShell.tsx",
+          "operation": "create",
+          "description": "Implement the primary responsive layout with a left sidebar area, top header area, and main content area, styled to match the BrandBoost-inspired references. Use shadcn-ui components (e.g., Sheet for mobile sidebar) to support responsive navigation; Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/navigation/SidebarNav.tsx",
+          "operation": "create",
+          "description": "Create sidebar navigation with the required nav items and active-route highlighting, optimized for desktop and mobile. Use shadcn-ui components (e.g., Button, Tooltip if available) for consistent interactions; Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/ChatPage.tsx",
+          "operation": "create",
+          "description": "Create the Chat page route container with module header/title and placeholder loading/error states."
+        },
+        {
+          "path": "frontend/src/pages/MakerLandingPage.tsx",
+          "operation": "create",
+          "description": "Create the Photo/Video Maker landing page route container with module header/title."
+        },
+        {
+          "path": "frontend/src/pages/BusinessAnalyticsPage.tsx",
+          "operation": "create",
+          "description": "Create the Business Analytics page route container with module header/title."
+        },
+        {
+          "path": "frontend/src/pages/GalleryPage.tsx",
+          "operation": "create",
+          "description": "Create the Gallery page route container with module header/title."
+        },
+        {
+          "path": "frontend/src/pages/ShopMakerPage.tsx",
+          "operation": "create",
+          "description": "Create the Shop Maker placeholder page route container with module header/title."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Apply a consistent navy/green/black gradient visual theme with modern typography and subtle glow accents across all pages.",
+      "acceptanceCriteria": [
+        "All pages share the same background gradient family (navy/green/black) and consistent spacing/typography.",
+        "Primary buttons have a subtle glow/hover effect without being distracting.",
+        "No page uses a drastically different visual style from the rest of the app."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Define global theme tokens (background gradient, typography defaults, glow accents, focus states) and ensure consistent base styling across all routes."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind theme tokens to support the navy/green/black palette, glow shadows, and consistent typography utilities used across the app."
+        },
+        {
+          "path": "frontend/src/components/layout/AppShell.tsx",
+          "operation": "modify",
+          "description": "Apply shared layout styling (gradient background, consistent spacing, subtle card borders/shadows) so all pages inherit the same professional visual system."
+        },
+        {
+          "path": "frontend/src/components/ui/GlowButton.tsx",
+          "operation": "create",
+          "description": "Create a reusable primary action button wrapper with subtle glow/hover styling consistent with the theme. Use shadcn-ui Button as the base for consistent behavior; Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add a lightweight butterfly-flying background animation on every page that does not block interactions and respects prefers-reduced-motion.",
+      "acceptanceCriteria": [
+        "Butterfly animation is visible on all routes/pages.",
+        "Animation does not prevent clicking/typing (pointer events do not block UI).",
+        "When the OS/browser prefers-reduced-motion is enabled, the animation is disabled or significantly reduced."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/background/ButterflyBackground.tsx",
+          "operation": "create",
+          "description": "Implement a lightweight decorative butterfly animation layer (e.g., SVG sprites moving along keyframed paths) with pointer-events disabled and reduced-motion handling."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add keyframes and prefers-reduced-motion CSS to disable/reduce butterfly animation and ensure the animation layer never intercepts pointer events."
+        },
+        {
+          "path": "frontend/src/components/layout/AppShell.tsx",
+          "operation": "modify",
+          "description": "Mount the ButterflyBackground behind the content so it appears on every page without blocking UI interactions."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Implement Internet Identity login screen and authenticated app access, with a logged-in status indicator and logout action.",
+      "acceptanceCriteria": [
+        "Unauthenticated users are routed to a login screen that offers Internet Identity sign-in.",
+        "Authenticated users can access all main pages.",
+        "The UI shows the logged-in status (e.g., principal short form) and a logout action."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/LoginPage.tsx",
+          "operation": "create",
+          "description": "Create a dedicated login screen (simple centered card) that uses the authorization component's Internet Identity flow via the existing useInternetIdentity hook; Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/auth/AuthGate.tsx",
+          "operation": "create",
+          "description": "Implement an auth guard wrapper that redirects unauthenticated users to the Login route and prevents loading restricted module UI until authenticated (as required by the authorization component guidance); Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/auth/ProfileSetupModal.tsx",
+          "operation": "create",
+          "description": "Prompt first-time logged-in users for a display name and save it via getCallerUserProfile/saveCallerUserProfile guidance from the authorization component; Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useCurrentUserProfile.ts",
+          "operation": "create",
+          "description": "Add a react-query hook to fetch getCallerUserProfile with correct loading semantics (avoid setup-modal flash) following the authorization component's frontend guidance; Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/layout/AppHeader.tsx",
+          "operation": "create",
+          "description": "Create a header area that shows logged-in status (prefer user profile name) and provides a logout action using useInternetIdentity + react-query cache clear per authorization component guidance; Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire Login route, wrap authenticated routes with AuthGate, and mount ProfileSetupModal for first-time users; ensure all main pages are accessible only after Internet Identity login."
+        },
+        {
+          "path": "frontend/src/components/layout/AppShell.tsx",
+          "operation": "modify",
+          "description": "Integrate AppHeader into the shell so login status/logout is consistently visible when authenticated."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Build Chat UI with message history, input, controls, and lightweight canned assistant replies; persist chat per user for the current session.",
+      "acceptanceCriteria": [
+        "Chat page contains a scrollable message history and a text input with send button.",
+        "New Chat clears the current conversation; Clear removes messages.",
+        "Sending a message results in an assistant reply generated locally/with simple backend logic (no external LLM).",
+        "Chat history persists per authenticated user (at least for the current app session; preferably stored in backend)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ChatPage.tsx",
+          "operation": "modify",
+          "description": "Implement BrandBoost-style chat layout: scrollable message list, message composer, and controls (New Chat, Clear). Use shadcn-ui components (Card, Input, Button, ScrollArea if available) for consistent UI; Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/lib/chat/cannedReplies.ts",
+          "operation": "create",
+          "description": "Add simple rule-based/canned assistant reply generation (no external AI)."
+        },
+        {
+          "path": "frontend/src/hooks/useChatSession.ts",
+          "operation": "create",
+          "description": "Persist chat history per authenticated user for the current app session (e.g., localStorage keyed by principal/user profile) and expose helpers for New Chat/Clear and message append."
+        },
+        {
+          "path": "frontend/src/components/chat/ChatMessageList.tsx",
+          "operation": "create",
+          "description": "Create the message history UI with proper alignment for user vs assistant messages and auto-scroll behavior. Use shadcn-ui components (ScrollArea) if available; Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/chat/ChatComposer.tsx",
+          "operation": "create",
+          "description": "Create the chat input row with a text input and send button, handling enter-to-send and disabled/loading states. Use shadcn-ui Input/Button; Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Build Photo/Video Maker landing page with feature cards for Photo for Post and Video for Reels/Shorts, each linking to its flow.",
+      "acceptanceCriteria": [
+        "Maker landing page shows at least two cards: Photo for Post and Video for Reels/Shorts.",
+        "Each card includes a title, short description, and a Get Started CTA.",
+        "Get Started navigates to a working page for the selected tool."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/MakerLandingPage.tsx",
+          "operation": "modify",
+          "description": "Implement a grid of BrandBoost-inspired feature cards (Photo for Post, Video for Reels/Shorts) with Get Started CTAs. Use shadcn-ui Card/Button for consistent visuals; Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add and wire routes for the Photo for Post and Video for Reels/Shorts flows so MakerLanding CTAs navigate to working pages."
+        },
+        {
+          "path": "frontend/src/components/maker/FeatureCard.tsx",
+          "operation": "create",
+          "description": "Reusable feature card component used on the Maker landing page (title, description, icon/accent strip, CTA). Use shadcn-ui Card/Button; Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Implement Photo for Post multi-step flow: details form, theme selection, and result poster rendering with PNG download.",
+      "acceptanceCriteria": [
+        "Photo tool includes a details form with the fields shown in the BrandBoost reference screenshots (or close equivalents).",
+        "User can pick a template/theme and see a generated poster preview on the result screen.",
+        "Generated poster looks visually structured (headline, subhead, accent blocks) and is exportable (download as PNG)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/photo-for-post/PhotoDetailsPage.tsx",
+          "operation": "create",
+          "description": "Create the details form step with business fields (company name, category, product/service, offer, address/contact, additional details, optional image upload) and navigation to theme selection. Use shadcn-ui Form primitives/Input/Textarea; Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/photo-for-post/PhotoThemePage.tsx",
+          "operation": "create",
+          "description": "Create a theme/template selection step (grid of selectable themes) and navigation to results. Use shadcn-ui Card/RadioGroup/Button where appropriate; Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/photo-for-post/PhotoResultPage.tsx",
+          "operation": "create",
+          "description": "Render a professional poster preview using client-side templating (structured layout blocks) and provide Download PNG action."
+        },
+        {
+          "path": "frontend/src/lib/poster/templates.ts",
+          "operation": "create",
+          "description": "Define a small set of poster templates/themes (navy/green/black compatible) with structured typography and accent blocks."
+        },
+        {
+          "path": "frontend/src/lib/poster/renderPosterToCanvas.ts",
+          "operation": "create",
+          "description": "Implement client-side poster rendering to a canvas (supports optional uploaded image), returning a PNG-ready output for download."
+        },
+        {
+          "path": "frontend/src/hooks/useMakerDraft.ts",
+          "operation": "create",
+          "description": "Store and restore in-progress maker drafts (details + selected theme) across steps (and optionally across refresh) using local storage."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register and wire the Photo for Post step routes (details -> theme -> result) and ensure navigation is consistent with the app shell."
+        },
+        {
+          "path": "frontend/src/hooks/useGalleryPublish.ts",
+          "operation": "create",
+          "description": "Provide a helper to publish generated artifacts into the Gallery (store binary locally and call backend metadata via actor.addGalleryItem when available). Use authorization component guidance to ensure publishing is only done after login; Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Implement Video for Reels/Shorts multi-step flow: details form, transitions/style selection, animated preview, and an export action (placeholder if needed).",
+      "acceptanceCriteria": [
+        "Video tool includes a details form and a transitions/style selection step.",
+        "Result screen shows an animated preview (template-based).",
+        "An export action exists; if true video export is not feasible within constraints, the UI clearly downloads a placeholder artifact (e.g., GIF or frames ZIP) and labels it accordingly."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/video-for-reels/VideoDetailsPage.tsx",
+          "operation": "create",
+          "description": "Create the video details form step (business name, service/product, offers, optional media) and continue to transitions/style selection. Use shadcn-ui Input/Textarea/Upload affordances; Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/video-for-reels/VideoStylePage.tsx",
+          "operation": "create",
+          "description": "Create a transitions/style selection step (simple choices) and continue to result preview. Use shadcn-ui Card/RadioGroup/Button; Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/video-for-reels/VideoResultPage.tsx",
+          "operation": "create",
+          "description": "Implement a short template-based animated preview (client-side) and provide an export action that downloads a clearly labeled placeholder artifact if MP4/GIF export is not feasible."
+        },
+        {
+          "path": "frontend/src/lib/video/templates.ts",
+          "operation": "create",
+          "description": "Define simple short-form video template definitions (colors, timings, transitions) aligned with the app theme."
+        },
+        {
+          "path": "frontend/src/components/video/VideoPreview.tsx",
+          "operation": "create",
+          "description": "Render the animated preview (e.g., CSS/SVG/canvas-driven) without external AI generation; keep lightweight and professional-looking."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Register and wire the Video for Reels/Shorts step routes (details -> style -> result) and ensure navigation works from Maker landing."
+        },
+        {
+          "path": "frontend/src/hooks/useGalleryPublish.ts",
+          "operation": "modify",
+          "description": "Extend gallery publishing helper to support video placeholder exports (store artifact locally and persist metadata via backend addGalleryItem when available)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Build Business Analytics module with financial input form, computed metrics, and simple client-side charts.",
+      "acceptanceCriteria": [
+        "Analytics page contains a form for initial investment, revenue, costs, and cost breakdown fields.",
+        "Clicking Generate Analytics shows computed results (at least profit and profit margin).",
+        "Charts (bar and/or pie) render based on the entered values."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/BusinessAnalyticsPage.tsx",
+          "operation": "modify",
+          "description": "Implement the analytics form, compute metrics (profit, margin), and render a report section with charts. Use shadcn-ui Card/Input/Button for layout consistency; Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/lib/analytics/compute.ts",
+          "operation": "create",
+          "description": "Add pure functions for computing analytics outputs (profit, margin, breakdown normalization) from the user-entered inputs."
+        },
+        {
+          "path": "frontend/src/components/charts/PieChart.tsx",
+          "operation": "create",
+          "description": "Create a lightweight client-side pie chart component (SVG-based) for cost breakdown visualization."
+        },
+        {
+          "path": "frontend/src/components/charts/BarChart.tsx",
+          "operation": "create",
+          "description": "Create a lightweight client-side bar chart component (SVG-based) for revenue/cost/profit comparisons."
+        },
+        {
+          "path": "frontend/src/hooks/useSavedAnalytics.ts",
+          "operation": "create",
+          "description": "Persist analytics reports for the current user in the frontend (e.g., local storage keyed by principal) and expose them for Gallery integration."
+        },
+        {
+          "path": "frontend/src/hooks/useGalleryPublish.ts",
+          "operation": "modify",
+          "description": "Allow publishing analytics reports into the Gallery list as metadata entries (type Analytics) with a viewable report snapshot route/state."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Create a Gallery page with filter tabs and cards to view/download generated outputs, integrating saved items across modules.",
+      "acceptanceCriteria": [
+        "Gallery shows filter tabs for at least All, Photos, Videos, Analytics.",
+        "Each generated item appears as a card with title/type/date and actions (View, Download).",
+        "At least metadata for generated items is persisted per authenticated user in the backend and reloaded on refresh."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/GalleryPage.tsx",
+          "operation": "modify",
+          "description": "Implement filter tabs (All, Photos, Videos, Analytics), render item cards, and provide View/Download actions. Use shadcn-ui Tabs/Card/Button/Dialog for consistent UI; Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useGalleryItems.ts",
+          "operation": "create",
+          "description": "Create a react-query hook that loads gallery metadata from the backend interface (getGalleryByType) and maps it into UI-ready items; handle auth-required errors gracefully per authorization component guidance; Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/lib/gallery/localArtifactStore.ts",
+          "operation": "create",
+          "description": "Implement a frontend artifact store (e.g., IndexedDB/localStorage) to keep generated blobs/data-URLs addressable by gallery item id so downloads/view can work after refresh when backend stores only metadata."
+        },
+        {
+          "path": "frontend/src/components/gallery/GalleryCard.tsx",
+          "operation": "create",
+          "description": "Reusable gallery card component with title/type/date and View/Download actions. Use shadcn-ui Card/Button; Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/gallery/GalleryFilters.tsx",
+          "operation": "create",
+          "description": "Reusable filter tabs/segmented control for Gallery types (All/Photos/Videos/Analytics). Use shadcn-ui Tabs; Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/gallery/GalleryViewerDialog.tsx",
+          "operation": "create",
+          "description": "Implement an in-app viewer (dialog/drawer) for photo/video placeholder/analytics report preview. Use shadcn-ui Dialog/Sheet; Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "summary": "Add a polished Shop Maker placeholder page with a Coming soon message and an info/contact card section.",
+      "acceptanceCriteria": [
+        "Shop Maker route exists and is reachable from the sidebar.",
+        "Page displays a polished ‘Coming soon’ message and a simple info/contact card section."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/ShopMakerPage.tsx",
+          "operation": "modify",
+          "description": "Implement a polished Coming soon layout with an info/contact card section (English text), aligned with the global theme. Use shadcn-ui Card/Button where appropriate; Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/navigation/SidebarNav.tsx",
+          "operation": "modify",
+          "description": "Ensure Shop Maker is present in the sidebar nav and correctly routes to the placeholder page (and is visible across responsive states)."
+        }
+      ]
+    }
+  ]
+}

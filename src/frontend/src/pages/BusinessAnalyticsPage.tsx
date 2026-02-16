@@ -1,0 +1,183 @@
+import { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button';
+import { computeAnalytics } from '@/lib/analytics/compute';
+import PieChart from '@/components/charts/PieChart';
+import BarChart from '@/components/charts/BarChart';
+import { useSavedAnalytics } from '@/hooks/useSavedAnalytics';
+import { useGalleryPublish } from '@/hooks/useGalleryPublish';
+import { toast } from 'sonner';
+
+export default function BusinessAnalyticsPage() {
+  const [formData, setFormData] = useState({
+    initialInvestment: '5000',
+    totalRevenue: '18500',
+    totalCosts: '9200',
+    marketing: '2500',
+    operations: '5200',
+    other: '1500',
+  });
+
+  const [results, setResults] = useState<any>(null);
+  const { saveAnalytics } = useSavedAnalytics();
+  const { publishAnalytics } = useGalleryPublish();
+
+  const handleChange = (field: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleGenerate = () => {
+    const computed = computeAnalytics(formData);
+    setResults(computed);
+    saveAnalytics(computed);
+  };
+
+  const handleSaveToGallery = async () => {
+    if (!results) return;
+    await publishAnalytics(`Analytics Report - Profit: $${results.profit}`, results);
+    toast.success('Analytics saved to gallery!');
+  };
+
+  return (
+    <div className="max-w-6xl mx-auto space-y-6">
+      <div>
+        <h1 className="text-3xl font-bold">Business Analytics</h1>
+        <p className="text-muted-foreground mt-2">Analyze your business financial performance</p>
+      </div>
+
+      <div className="grid lg:grid-cols-2 gap-6">
+        <Card className="border-primary/20 bg-slate-950/50 backdrop-blur-sm">
+          <CardHeader>
+            <CardTitle>Enter Your Financial Data</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="initialInvestment">Initial Investment ($)</Label>
+              <Input
+                id="initialInvestment"
+                type="number"
+                value={formData.initialInvestment}
+                onChange={(e) => handleChange('initialInvestment', e.target.value)}
+                className="bg-slate-900/50 border-primary/20"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="totalRevenue">Total Revenue ($)</Label>
+              <Input
+                id="totalRevenue"
+                type="number"
+                value={formData.totalRevenue}
+                onChange={(e) => handleChange('totalRevenue', e.target.value)}
+                className="bg-slate-900/50 border-primary/20"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="totalCosts">Total Costs ($)</Label>
+              <Input
+                id="totalCosts"
+                type="number"
+                value={formData.totalCosts}
+                onChange={(e) => handleChange('totalCosts', e.target.value)}
+                className="bg-slate-900/50 border-primary/20"
+              />
+            </div>
+
+            <div className="pt-4 border-t border-primary/10">
+              <h3 className="font-semibold mb-4">Cost Breakdown</h3>
+              <div className="space-y-3">
+                <div className="space-y-2">
+                  <Label htmlFor="marketing">Marketing ($)</Label>
+                  <Input
+                    id="marketing"
+                    type="number"
+                    value={formData.marketing}
+                    onChange={(e) => handleChange('marketing', e.target.value)}
+                    className="bg-slate-900/50 border-primary/20"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="operations">Operations ($)</Label>
+                  <Input
+                    id="operations"
+                    type="number"
+                    value={formData.operations}
+                    onChange={(e) => handleChange('operations', e.target.value)}
+                    className="bg-slate-900/50 border-primary/20"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="other">Other ($)</Label>
+                  <Input
+                    id="other"
+                    type="number"
+                    value={formData.other}
+                    onChange={(e) => handleChange('other', e.target.value)}
+                    className="bg-slate-900/50 border-primary/20"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <Button
+              onClick={handleGenerate}
+              className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg"
+            >
+              Generate Analytics
+            </Button>
+          </CardContent>
+        </Card>
+
+        {results && (
+          <div className="space-y-6">
+            <Card className="border-primary/20 bg-slate-950/50 backdrop-blur-sm">
+              <CardHeader>
+                <CardTitle>Financial Summary</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-slate-900/50 rounded-lg p-4">
+                    <p className="text-sm text-muted-foreground">Profit</p>
+                    <p className="text-2xl font-bold text-green-400">${results.profit}</p>
+                  </div>
+                  <div className="bg-slate-900/50 rounded-lg p-4">
+                    <p className="text-sm text-muted-foreground">Profit Margin</p>
+                    <p className="text-2xl font-bold text-blue-400">{results.profitMargin}%</p>
+                  </div>
+                </div>
+                <Button
+                  onClick={handleSaveToGallery}
+                  variant="outline"
+                  className="w-full border-primary/20 hover:bg-primary/5"
+                >
+                  Save to Gallery
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="border-primary/20 bg-slate-950/50 backdrop-blur-sm">
+              <CardHeader>
+                <CardTitle>Revenue vs Costs</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <BarChart data={results.barData} />
+              </CardContent>
+            </Card>
+
+            <Card className="border-primary/20 bg-slate-950/50 backdrop-blur-sm">
+              <CardHeader>
+                <CardTitle>Cost Breakdown</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <PieChart data={results.pieData} />
+              </CardContent>
+            </Card>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

@@ -1,2 +1,3 @@
-# brandboost-studio
-Exported from Caffeine project: BrandBoost Studio
+## Busy AI
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

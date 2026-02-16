@@ -1,0 +1,242 @@
+{
+  "kind": "build_request",
+  "title": "Build core Busy AI pages from sketches + BrandBoost references (simplified)",
+  "projectName": "Busy AI",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create the app shell (responsive) with a left sidebar navigation inspired by the uploaded BrandBoost screenshots, including routes/pages for: Chat, Photo/Video Maker, Business Analytics, Gallery, and Shop Maker (placeholder).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Start building all the pages with the information I have gave at starting"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A persistent left sidebar is visible on desktop and collapses on small screens.",
+        "Sidebar contains nav items: Chat, Photo/Video Maker, Business Analytics, Gallery, Shop Maker.",
+        "Each nav item routes to a working page with a header/title matching the selected module."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Apply a consistent professional visual theme across all pages using a navy/green/black gradient background direction with modern typography and subtle glow accents (no blue-purple heavy palette), matching the overall style of the uploaded references.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "I want a navy gradient blue or green or black like that color which will be matching u can use that"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All pages share the same background gradient family (navy/green/black) and consistent spacing/typography.",
+        "Primary buttons have a subtle glow/hover effect without being distracting.",
+        "No page uses a drastically different visual style from the rest of the app."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Implement a lightweight butterfly-flying background animation that appears on every page without blocking UI interactions and with an option to reduce motion (respect prefers-reduced-motion).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Every pages I want butterflies flying"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Butterfly animation is visible on all routes/pages.",
+        "Animation does not prevent clicking/typing (pointer events do not block UI).",
+        "When the OS/browser prefers-reduced-motion is enabled, the animation is disabled or significantly reduced."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Implement authentication using Internet Identity, and provide a dedicated login screen styled similarly to the user’s sketch (simple centered card), plus a logged-in state indicator in the app shell.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Start building all the pages with the information I have gave at starting"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Unauthenticated users are routed to a login screen that offers Internet Identity sign-in.",
+        "Authenticated users can access all main pages.",
+        "The UI shows the logged-in status (e.g., principal short form) and a logout action."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Build the Chat page UI based on the BrandBoost-style layout: message list area, message input, and basic chat controls (New Chat, Clear). Implement simple non-AI responses (rule-based or canned) to keep the build lightweight.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Start building all the pages with the information I have gave at starting"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Chat page contains a scrollable message history and a text input with send button.",
+        "New Chat clears the current conversation; Clear removes messages.",
+        "Sending a message results in an assistant reply generated locally/with simple backend logic (no external LLM).",
+        "Chat history persists per authenticated user (at least for the current app session; preferably stored in backend)."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Build the Photo/Video Maker landing page with a grid of feature cards inspired by the uploaded BrandBoost maker screenshots. Include at minimum: Photo for Post and Video for Reels/Shorts, with “Get Started” leading to their respective flows.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Start building all the pages with the information I have gave at starting"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Maker landing page shows at least two cards: Photo for Post and Video for Reels/Shorts.",
+        "Each card includes a title, short description, and a Get Started CTA.",
+        "Get Started navigates to a working page for the selected tool."
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Implement the Photo for Post flow based on the references: a form page to enter business details (company name, category, product/service, offer, address/contact, additional details, optional image upload), then a theme selection step, then a result page that renders a professional-looking poster using templates (client-side rendering).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "the videos and photo that is to be generated has to be proffessional and attractive for professional use"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Photo tool includes a details form with the fields shown in the BrandBoost reference screenshots (or close equivalents).",
+        "User can pick a template/theme and see a generated poster preview on the result screen.",
+        "Generated poster looks visually structured (headline, subhead, accent blocks) and is exportable (download as PNG)."
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Implement the Video for Reels/Shorts flow based on the user sketch: details form (business name, service/product, offers, plus optional media), a transitions/style selection step (simple choices), and a result preview that plays a short template animation (client-side) and allows export (at least as a downloadable MP4/GIF if feasible, otherwise provide a downloadable image sequence/placeholder export).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "the videos and photo that is to be generated has to be proffessional and attractive for professional use"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Video tool includes a details form and a transitions/style selection step.",
+        "Result screen shows an animated preview (template-based).",
+        "An export action exists; if true video export is not feasible within constraints, the UI clearly downloads a placeholder artifact (e.g., GIF or frames ZIP) and labels it accordingly."
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Build the Business Analytics module inspired by the uploaded BrandBoost analytics screen: a financial input form (initial investment, total revenue, total costs + cost breakdown fields) and an analytics report view with computed metrics (profit, margin) plus simple charts (bar/pie) rendered client-side.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "I want business analytics as per the photo provided"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Analytics page contains a form for initial investment, revenue, costs, and cost breakdown fields.",
+        "Clicking Generate Analytics shows computed results (at least profit and profit margin).",
+        "Charts (bar and/or pie) render based on the entered values."
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Create a Gallery page inspired by the uploaded BrandBoost gallery screenshot with filter tabs (All, Photos, Videos, Analytics) and cards listing generated outputs with actions to view and download.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Start building all the pages with the information I have gave at starting"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Gallery shows filter tabs for at least All, Photos, Videos, Analytics.",
+        "Each generated item appears as a card with title/type/date and actions (View, Download).",
+        "At least metadata for generated items is persisted per authenticated user in the backend and reloaded on refresh."
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Implement backend persistence (single Motoko actor) for per-user data needed by the simplified app: chat conversations (messages), gallery items (metadata), and saved analytics reports (inputs + computed outputs).",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Start building all the pages with the information I have gave at starting"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend stores data keyed by authenticated user principal.",
+        "Frontend can create/read lists for chats and gallery items via canister calls.",
+        "Analytics reports can be saved and retrieved for the Gallery filter (Analytics)."
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Add a Shop Maker placeholder page based on the sketch card (‘Shop maker’) that explains it is coming soon and includes a simple contact/info card layout (no e-commerce or payments).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "On my sketches buy some major things to be combined as a single app"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Shop Maker route exists and is reachable from the sidebar.",
+        "Page displays a polished ‘Coming soon’ message and a simple info/contact card section."
+      ]
+    }
+  ],
+  "constraints": [
+    "Use English for all user-facing UI text.",
+    "Backend must follow single-actor Motoko architecture (all logic in the main actor).",
+    "Do not implement email/password authentication; use Internet Identity only.",
+    "Do not integrate external LLM or AI model providers; implement template-based generation and simple canned chat replies instead to keep scope small and within platform limits.",
+    "Frontend paths designated immutable by the platform must not be edited (compose UI using allowed files/components)."
+  ],
+  "nonGoals": [
+    "True AI image generation via third-party model APIs.",
+    "True AI video generation via third-party model APIs.",
+    "Real-time chat (WebSockets) or live collaboration.",
+    "Payments, subscriptions, or full e-commerce features.",
+    "Complex multi-step onboarding beyond a basic Internet Identity login screen."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
