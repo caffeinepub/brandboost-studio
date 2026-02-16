@@ -1,23 +1,24 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-16T22:56:32.957Z",
+  "generatedAt": "2026-02-16T23:10:19.157Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 12,
-    "implemented": 11,
+    "total": 6,
+    "implemented": 6,
     "items": [
       {
-        "id": "REQ-1",
-        "summary": "Create the app shell (responsive) with a left sidebar navigation inspired by the uploaded BrandBoost screenshots, including routes/pages for: Chat, Photo/Video Maker, Business Analytics, Gallery, and Shop Maker (placeholder).",
+        "id": "REQ-13",
+        "summary": "Replace the current dark blue/purple-heavy global backgrounds with a lighter, readable navy/green gradient across the entire app (AppShell, Login page, and AuthGate loading screen), ensuring text and surfaces maintain strong contrast and are clearly visible.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/App.tsx",
+          "frontend/src/index.css",
           "frontend/src/components/layout/AppShell.tsx",
-          "frontend/src/components/navigation/SidebarNav.tsx",
+          "frontend/src/pages/LoginPage.tsx",
+          "frontend/src/components/auth/AuthGate.tsx",
           "frontend/src/pages/ChatPage.tsx",
           "frontend/src/pages/MakerLandingPage.tsx",
           "frontend/src/pages/BusinessAnalyticsPage.tsx",
@@ -25,9 +26,10 @@
           "frontend/src/pages/ShopMakerPage.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/App.tsx",
+          "frontend/src/index.css",
           "frontend/src/components/layout/AppShell.tsx",
-          "frontend/src/components/navigation/SidebarNav.tsx",
+          "frontend/src/pages/LoginPage.tsx",
+          "frontend/src/components/auth/AuthGate.tsx",
           "frontend/src/pages/ChatPage.tsx",
           "frontend/src/pages/MakerLandingPage.tsx",
           "frontend/src/pages/BusinessAnalyticsPage.tsx",
@@ -36,326 +38,135 @@
         ]
       },
       {
-        "id": "REQ-10",
-        "summary": "Create a Gallery page inspired by the uploaded BrandBoost gallery screenshot with filter tabs (All, Photos, Videos, Analytics) and cards listing generated outputs with actions to view and download.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/GalleryPage.tsx",
-          "frontend/src/hooks/useGalleryItems.ts",
-          "frontend/src/lib/gallery/localArtifactStore.ts",
-          "frontend/src/components/gallery/GalleryCard.tsx",
-          "frontend/src/components/gallery/GalleryFilters.tsx",
-          "frontend/src/components/gallery/GalleryViewerDialog.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/GalleryPage.tsx",
-          "frontend/src/hooks/useGalleryItems.ts",
-          "frontend/src/components/gallery/GalleryCard.tsx"
-        ]
-      },
-      {
-        "id": "REQ-11",
-        "summary": "Implement backend persistence (single Motoko actor) for per-user data needed by the simplified app: chat conversations (messages), gallery items (metadata), and saved analytics reports (inputs + computed outputs).",
-        "status": "unknown",
-        "plannedFiles": [],
-        "matchedFiles": []
-      },
-      {
-        "id": "REQ-12",
-        "summary": "Add a Shop Maker placeholder page based on the sketch card (‘Shop maker’) that explains it is coming soon and includes a simple contact/info card layout (no e-commerce or payments).",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/ShopMakerPage.tsx",
-          "frontend/src/components/navigation/SidebarNav.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/ShopMakerPage.tsx",
-          "frontend/src/components/navigation/SidebarNav.tsx"
-        ]
-      },
-      {
-        "id": "REQ-2",
-        "summary": "Apply a consistent professional visual theme across all pages using a navy/green/black gradient background direction with modern typography and subtle glow accents (no blue-purple heavy palette), matching the overall style of the uploaded references.",
+        "id": "REQ-14",
+        "summary": "Update the app’s color tokens and gradients to de-emphasize purple (including the current primary/accent hues) in favor of a light navy + green palette, and apply these tokens consistently to headings, cards, borders, and UI accents.",
         "status": "implemented",
         "plannedFiles": [
           "frontend/src/index.css",
           "frontend/tailwind.config.js",
           "frontend/src/components/layout/AppShell.tsx",
-          "frontend/src/components/ui/GlowButton.tsx"
+          "frontend/src/components/layout/AppHeader.tsx",
+          "frontend/src/components/navigation/SidebarNav.tsx",
+          "frontend/src/components/background/ButterflyBackground.tsx",
+          "frontend/src/pages/ChatPage.tsx",
+          "frontend/src/pages/MakerLandingPage.tsx",
+          "frontend/src/pages/BusinessAnalyticsPage.tsx"
         ],
         "matchedFiles": [
           "frontend/src/index.css",
           "frontend/tailwind.config.js",
-          "frontend/src/components/layout/AppShell.tsx"
+          "frontend/src/components/layout/AppShell.tsx",
+          "frontend/src/components/layout/AppHeader.tsx",
+          "frontend/src/components/navigation/SidebarNav.tsx",
+          "frontend/src/components/background/ButterflyBackground.tsx",
+          "frontend/src/pages/ChatPage.tsx",
+          "frontend/src/pages/MakerLandingPage.tsx",
+          "frontend/src/pages/BusinessAnalyticsPage.tsx"
         ]
       },
       {
-        "id": "REQ-3",
-        "summary": "Implement a lightweight butterfly-flying background animation that appears on every page without blocking UI interactions and with an option to reduce motion (respect prefers-reduced-motion).",
+        "id": "REQ-15",
+        "summary": "Implement animated/glowing button styling across the app for primary and key call-to-action buttons, while respecting prefers-reduced-motion (reduce/disable glow animations when the user requests reduced motion).",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/background/ButterflyBackground.tsx",
           "frontend/src/index.css",
+          "frontend/src/pages/LoginPage.tsx",
+          "frontend/src/pages/MakerLandingPage.tsx",
+          "frontend/src/pages/BusinessAnalyticsPage.tsx",
+          "frontend/src/pages/ShopMakerPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/src/pages/LoginPage.tsx",
+          "frontend/src/pages/MakerLandingPage.tsx",
+          "frontend/src/pages/BusinessAnalyticsPage.tsx",
+          "frontend/src/pages/ShopMakerPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-16",
+        "summary": "Increase logo emphasis on the app’s “front page” (Login screen) and on the AuthGate loading screen by adding a clearer, larger logo/wordmark treatment and placing it prominently in the layout.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/generated/busy-ai-logo.dim_512x512.png",
+          "frontend/public/assets/generated/busy-ai-wordmark.dim_1200x300.png",
+          "frontend/public/assets/generated/busy-ai-favicon.dim_64x64.png",
+          "frontend/index.html",
+          "frontend/src/pages/LoginPage.tsx",
+          "frontend/src/components/auth/AuthGate.tsx",
           "frontend/src/components/layout/AppShell.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/components/background/ButterflyBackground.tsx",
-          "frontend/src/index.css",
+          "frontend/public/assets/generated/busy-ai-logo.dim_512x512.png",
+          "frontend/public/assets/generated/busy-ai-wordmark.dim_1200x300.png",
+          "frontend/public/assets/generated/busy-ai-favicon.dim_64x64.png",
+          "frontend/index.html",
+          "frontend/src/pages/LoginPage.tsx",
+          "frontend/src/components/auth/AuthGate.tsx",
           "frontend/src/components/layout/AppShell.tsx"
         ]
       },
       {
-        "id": "REQ-4",
-        "summary": "Implement authentication using Internet Identity, and provide a dedicated login screen styled similarly to the user’s sketch (simple centered card), plus a logged-in state indicator in the app shell.",
+        "id": "REQ-17",
+        "summary": "Keep existing icons and any current imagery unless a change is necessary for readability/consistency, and ensure the UI remains icon-forward rather than adding new full-size decorative images from the BrandBoost references without explicit placement instructions.",
         "status": "implemented",
         "plannedFiles": [
           "frontend/src/pages/LoginPage.tsx",
-          "frontend/src/components/auth/AuthGate.tsx",
-          "frontend/src/components/auth/ProfileSetupModal.tsx",
-          "frontend/src/hooks/useCurrentUserProfile.ts",
-          "frontend/src/components/layout/AppHeader.tsx",
-          "frontend/src/App.tsx",
-          "frontend/src/components/layout/AppShell.tsx"
+          "frontend/src/components/layout/AppShell.tsx",
+          "frontend/src/components/background/ButterflyBackground.tsx"
         ],
         "matchedFiles": [
           "frontend/src/pages/LoginPage.tsx",
+          "frontend/src/components/layout/AppShell.tsx",
+          "frontend/src/components/background/ButterflyBackground.tsx"
+        ]
+      },
+      {
+        "id": "REQ-18",
+        "summary": "Investigate and fix the reported “blank/Can’t see anything” experience by ensuring the authenticated and unauthenticated routes always render visible content (including during initialization), and that no page relies on near-black overlays that obscure content on the updated light gradient background.",
+        "status": "implemented",
+        "plannedFiles": [
           "frontend/src/components/auth/AuthGate.tsx",
-          "frontend/src/components/auth/ProfileSetupModal.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/index.css",
           "frontend/src/components/layout/AppHeader.tsx",
-          "frontend/src/App.tsx",
-          "frontend/src/components/layout/AppShell.tsx"
-        ]
-      },
-      {
-        "id": "REQ-5",
-        "summary": "Build the Chat page UI based on the BrandBoost-style layout: message list area, message input, and basic chat controls (New Chat, Clear). Implement simple non-AI responses (rule-based or canned) to keep the build lightweight.",
-        "status": "implemented",
-        "plannedFiles": [
           "frontend/src/pages/ChatPage.tsx",
-          "frontend/src/lib/chat/cannedReplies.ts",
-          "frontend/src/hooks/useChatSession.ts",
-          "frontend/src/components/chat/ChatMessageList.tsx",
-          "frontend/src/components/chat/ChatComposer.tsx"
+          "frontend/src/pages/GalleryPage.tsx"
         ],
         "matchedFiles": [
+          "frontend/src/components/auth/AuthGate.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/index.css",
+          "frontend/src/components/layout/AppHeader.tsx",
           "frontend/src/pages/ChatPage.tsx",
-          "frontend/src/lib/chat/cannedReplies.ts",
-          "frontend/src/hooks/useChatSession.ts",
-          "frontend/src/components/chat/ChatMessageList.tsx",
-          "frontend/src/components/chat/ChatComposer.tsx"
-        ]
-      },
-      {
-        "id": "REQ-6",
-        "summary": "Build the Photo/Video Maker landing page with a grid of feature cards inspired by the uploaded BrandBoost maker screenshots. Include at minimum: Photo for Post and Video for Reels/Shorts, with “Get Started” leading to their respective flows.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/MakerLandingPage.tsx",
-          "frontend/src/App.tsx",
-          "frontend/src/components/maker/FeatureCard.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/MakerLandingPage.tsx",
-          "frontend/src/App.tsx"
-        ]
-      },
-      {
-        "id": "REQ-7",
-        "summary": "Implement the Photo for Post flow based on the references: a form page to enter business details (company name, category, product/service, offer, address/contact, additional details, optional image upload), then a theme selection step, then a result page that renders a professional-looking poster using templates (client-side rendering).",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/photo-for-post/PhotoDetailsPage.tsx",
-          "frontend/src/pages/photo-for-post/PhotoThemePage.tsx",
-          "frontend/src/pages/photo-for-post/PhotoResultPage.tsx",
-          "frontend/src/lib/poster/templates.ts",
-          "frontend/src/lib/poster/renderPosterToCanvas.ts",
-          "frontend/src/hooks/useMakerDraft.ts",
-          "frontend/src/App.tsx",
-          "frontend/src/hooks/useGalleryPublish.ts"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/photo-for-post/PhotoDetailsPage.tsx",
-          "frontend/src/pages/photo-for-post/PhotoThemePage.tsx",
-          "frontend/src/pages/photo-for-post/PhotoResultPage.tsx",
-          "frontend/src/lib/poster/renderPosterToCanvas.ts",
-          "frontend/src/hooks/useMakerDraft.ts",
-          "frontend/src/App.tsx",
-          "frontend/src/hooks/useGalleryPublish.ts"
-        ]
-      },
-      {
-        "id": "REQ-8",
-        "summary": "Implement the Video for Reels/Shorts flow based on the user sketch: details form (business name, service/product, offers, plus optional media), a transitions/style selection step (simple choices), and a result preview that plays a short template animation (client-side) and allows export (at least as a downloadable MP4/GIF if feasible, otherwise provide a downloadable image sequence/placeholder export).",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/video-for-reels/VideoDetailsPage.tsx",
-          "frontend/src/pages/video-for-reels/VideoStylePage.tsx",
-          "frontend/src/pages/video-for-reels/VideoResultPage.tsx",
-          "frontend/src/lib/video/templates.ts",
-          "frontend/src/components/video/VideoPreview.tsx",
-          "frontend/src/App.tsx",
-          "frontend/src/hooks/useGalleryPublish.ts"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/video-for-reels/VideoDetailsPage.tsx",
-          "frontend/src/pages/video-for-reels/VideoStylePage.tsx",
-          "frontend/src/pages/video-for-reels/VideoResultPage.tsx",
-          "frontend/src/components/video/VideoPreview.tsx",
-          "frontend/src/App.tsx",
-          "frontend/src/hooks/useGalleryPublish.ts"
-        ]
-      },
-      {
-        "id": "REQ-9",
-        "summary": "Build the Business Analytics module inspired by the uploaded BrandBoost analytics screen: a financial input form (initial investment, total revenue, total costs + cost breakdown fields) and an analytics report view with computed metrics (profit, margin) plus simple charts (bar/pie) rendered client-side.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/BusinessAnalyticsPage.tsx",
-          "frontend/src/lib/analytics/compute.ts",
-          "frontend/src/components/charts/PieChart.tsx",
-          "frontend/src/components/charts/BarChart.tsx",
-          "frontend/src/hooks/useSavedAnalytics.ts",
-          "frontend/src/hooks/useGalleryPublish.ts"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/BusinessAnalyticsPage.tsx",
-          "frontend/src/lib/analytics/compute.ts",
-          "frontend/src/components/charts/PieChart.tsx",
-          "frontend/src/components/charts/BarChart.tsx",
-          "frontend/src/hooks/useSavedAnalytics.ts",
-          "frontend/src/hooks/useGalleryPublish.ts"
+          "frontend/src/pages/GalleryPage.tsx"
         ]
       }
     ]
   },
   "changedFiles": [
-    "backend/authorization/MixinAuthorization.mo",
-    "backend/authorization/access-control.mo",
-    "backend/main.mo",
     "build-request.json",
-    "build-template/Dockerfile",
-    "build-template/LICENSE",
     "build-template/README.md",
-    "build-template/deploy.sh",
-    "build-template/icp.yaml",
-    "build-template/package.json",
-    "build-template/pnpm-lock.yaml",
-    "build-template/pnpm-workspace.yaml",
-    "build-template/scripts/prune-unused-images.js",
-    "build-template/scripts/resize-images.js",
-    "build-template/src/backend/canister.yaml",
-    "build-template/src/backend/system-idl/aaaaa-aa.did",
-    "build-template/src/frontend/canister.yaml",
-    "build-template/src/frontend/components.json",
-    "build-template/src/frontend/env.json",
-    "build-template/src/frontend/eslint-rules/no-bigint-in-query-keys.js",
-    "build-template/src/frontend/eslint-rules/require-internet-identity-provider.js",
-    "build-template/src/frontend/eslint.config.js",
-    "build-template/src/frontend/package.json",
-    "build-template/src/frontend/postcss.config.js",
-    "build-template/src/frontend/src/components/ui/accordion.tsx",
-    "build-template/src/frontend/src/components/ui/alert-dialog.tsx",
-    "build-template/src/frontend/src/components/ui/alert.tsx",
-    "build-template/src/frontend/src/components/ui/aspect-ratio.tsx",
-    "build-template/src/frontend/src/components/ui/avatar.tsx",
-    "build-template/src/frontend/src/components/ui/badge.tsx",
-    "build-template/src/frontend/src/components/ui/breadcrumb.tsx",
-    "build-template/src/frontend/src/components/ui/button.tsx",
-    "build-template/src/frontend/src/components/ui/calendar.tsx",
-    "build-template/src/frontend/src/components/ui/card.tsx",
-    "build-template/src/frontend/src/components/ui/carousel.tsx",
-    "build-template/src/frontend/src/components/ui/chart.tsx",
-    "build-template/src/frontend/src/components/ui/checkbox.tsx",
-    "build-template/src/frontend/src/components/ui/collapsible.tsx",
-    "build-template/src/frontend/src/components/ui/command.tsx",
-    "build-template/src/frontend/src/components/ui/context-menu.tsx",
-    "build-template/src/frontend/src/components/ui/dialog.tsx",
-    "build-template/src/frontend/src/components/ui/drawer.tsx",
-    "build-template/src/frontend/src/components/ui/dropdown-menu.tsx",
-    "build-template/src/frontend/src/components/ui/form.tsx",
-    "build-template/src/frontend/src/components/ui/hover-card.tsx",
-    "build-template/src/frontend/src/components/ui/input-otp.tsx",
-    "build-template/src/frontend/src/components/ui/input.tsx",
-    "build-template/src/frontend/src/components/ui/label.tsx",
-    "build-template/src/frontend/src/components/ui/menubar.tsx",
-    "build-template/src/frontend/src/components/ui/navigation-menu.tsx",
-    "build-template/src/frontend/src/components/ui/pagination.tsx",
-    "build-template/src/frontend/src/components/ui/popover.tsx",
-    "build-template/src/frontend/src/components/ui/progress.tsx",
-    "build-template/src/frontend/src/components/ui/radio-group.tsx",
-    "build-template/src/frontend/src/components/ui/resizable.tsx",
-    "build-template/src/frontend/src/components/ui/scroll-area.tsx",
-    "build-template/src/frontend/src/components/ui/select.tsx",
-    "build-template/src/frontend/src/components/ui/separator.tsx",
-    "build-template/src/frontend/src/components/ui/sheet.tsx",
-    "build-template/src/frontend/src/components/ui/sidebar.tsx",
-    "build-template/src/frontend/src/components/ui/skeleton.tsx",
-    "build-template/src/frontend/src/components/ui/slider.tsx",
-    "build-template/src/frontend/src/components/ui/sonner.tsx",
-    "build-template/src/frontend/src/components/ui/switch.tsx",
-    "build-template/src/frontend/src/components/ui/table.tsx",
-    "build-template/src/frontend/src/components/ui/tabs.tsx",
-    "build-template/src/frontend/src/components/ui/textarea.tsx",
-    "build-template/src/frontend/src/components/ui/toggle-group.tsx",
-    "build-template/src/frontend/src/components/ui/toggle.tsx",
-    "build-template/src/frontend/src/components/ui/tooltip.tsx",
-    "build-template/src/frontend/src/hooks/use-mobile.tsx",
-    "build-template/src/frontend/src/lib/utils.ts",
-    "build-template/src/frontend/tsconfig.json",
-    "build-template/src/frontend/vite.config.js",
-    "build-template/tsconfig.json",
-    "caffeine.lock.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/index.css",
     "frontend/index.html",
+    "frontend/public/assets/generated/busy-ai-favicon.dim_64x64.png",
+    "frontend/public/assets/generated/busy-ai-logo.dim_512x512.png",
+    "frontend/public/assets/generated/busy-ai-wordmark.dim_1200x300.png",
     "frontend/src/App.tsx",
-    "frontend/src/backend.d.ts",
-    "frontend/src/backend.ts",
     "frontend/src/components/auth/AuthGate.tsx",
-    "frontend/src/components/auth/ProfileSetupModal.tsx",
     "frontend/src/components/background/ButterflyBackground.tsx",
-    "frontend/src/components/charts/BarChart.tsx",
-    "frontend/src/components/charts/PieChart.tsx",
-    "frontend/src/components/chat/ChatComposer.tsx",
-    "frontend/src/components/chat/ChatMessageList.tsx",
-    "frontend/src/components/gallery/GalleryCard.tsx",
     "frontend/src/components/layout/AppHeader.tsx",
     "frontend/src/components/layout/AppShell.tsx",
     "frontend/src/components/navigation/SidebarNav.tsx",
-    "frontend/src/components/video/VideoPreview.tsx",
-    "frontend/src/config.ts",
-    "frontend/src/declarations/backend.did.d.ts",
-    "frontend/src/declarations/backend.did.js",
-    "frontend/src/hooks/useActor.ts",
-    "frontend/src/hooks/useChatSession.ts",
-    "frontend/src/hooks/useGalleryItems.ts",
-    "frontend/src/hooks/useGalleryPublish.ts",
-    "frontend/src/hooks/useInternetIdentity.ts",
-    "frontend/src/hooks/useMakerDraft.ts",
-    "frontend/src/hooks/useQueries.ts",
-    "frontend/src/hooks/useSavedAnalytics.ts",
     "frontend/src/index.css",
-    "frontend/src/lib/analytics/compute.ts",
-    "frontend/src/lib/chat/cannedReplies.ts",
-    "frontend/src/lib/poster/renderPosterToCanvas.ts",
-    "frontend/src/main.tsx",
     "frontend/src/pages/BusinessAnalyticsPage.tsx",
     "frontend/src/pages/ChatPage.tsx",
     "frontend/src/pages/GalleryPage.tsx",
     "frontend/src/pages/LoginPage.tsx",
     "frontend/src/pages/MakerLandingPage.tsx",
     "frontend/src/pages/ShopMakerPage.tsx",
-    "frontend/src/pages/photo-for-post/PhotoDetailsPage.tsx",
-    "frontend/src/pages/photo-for-post/PhotoResultPage.tsx",
-    "frontend/src/pages/photo-for-post/PhotoThemePage.tsx",
-    "frontend/src/pages/video-for-reels/VideoDetailsPage.tsx",
-    "frontend/src/pages/video-for-reels/VideoResultPage.tsx",
-    "frontend/src/pages/video-for-reels/VideoStylePage.tsx",
-    "frontend/src/ui-summary.json",
-    "frontend/src/utils/StorageClient.ts",
-    "frontend/src/utils/urlParams.ts",
     "frontend/tailwind.config.js",
     "project_state.json",
     "scratch/component-selection.json",

@@ -26,7 +26,7 @@ export default function MakerLandingPage() {
   return (
     <div className="max-w-6xl mx-auto space-y-6">
       <div>
-        <h1 className="text-3xl font-bold">Photo & Video Maker</h1>
+        <h1 className="text-3xl font-bold text-foreground">Photo & Video Maker</h1>
         <p className="text-muted-foreground mt-2">Create professional marketing content with AI-powered tools</p>
       </div>
 
@@ -36,7 +36,7 @@ export default function MakerLandingPage() {
           return (
             <Card
               key={feature.title}
-              className="border-primary/20 bg-slate-950/50 backdrop-blur-sm hover:border-primary/40 transition-all duration-300 overflow-hidden group"
+              className="border-primary/30 bg-card/80 backdrop-blur-sm hover:border-primary/50 transition-all duration-300 overflow-hidden group"
             >
               <div className={`h-2 bg-gradient-to-r ${feature.color}`} />
               <CardHeader>
@@ -45,7 +45,7 @@ export default function MakerLandingPage() {
                     <Icon className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <CardTitle className="text-xl">{feature.title}</CardTitle>
+                    <CardTitle className="text-xl text-foreground">{feature.title}</CardTitle>
                   </div>
                 </div>
                 <CardDescription className="text-base mt-2">{feature.description}</CardDescription>
@@ -53,7 +53,7 @@ export default function MakerLandingPage() {
               <CardContent>
                 <Button
                   onClick={() => navigate({ to: feature.path })}
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg group-hover:shadow-xl transition-all duration-300"
+                  className="btn-glow w-full text-primary-foreground"
                 >
                   Get Started
                 </Button>

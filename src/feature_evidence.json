@@ -2,15 +2,16 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-create-the-app-shell-responsive-with-a-left-sidebar-navigation-inspired-by-the-uploaded-brandboost-screenshots-including-routes-pages-for-chat-photo-video-maker-business-analytics-gallery-and-shop-maker-placeholder",
-      "featureTitle": "Create the app shell (responsive) with a left sidebar navigation inspired by the uploaded BrandBoost screenshots, including routes/pages for: Chat, Photo/Video Maker, Business Analytics, Gallery, and Shop Maker (placeholder).",
+      "featureId": "feature-replace-the-current-dark-blue-purple-heavy-global-backgrounds-with-a-lighter-readable-navy-green-gradient-across-the-entire-app-appshell-login-page-and-authgate-loading-screen-ensuring-text-and-surfaces-maintain-strong-contrast-and-are-clearly-visible",
+      "featureTitle": "Replace the current dark blue/purple-heavy global backgrounds with a lighter, readable navy/green gradient across the entire app (AppShell, Login page, and AuthGate loading screen), ensuring text and surfaces maintain strong contrast and are clearly visible.",
       "files": [
-        "frontend/src/App.tsx",
+        "frontend/src/components/auth/AuthGate.tsx",
         "frontend/src/components/layout/AppShell.tsx",
-        "frontend/src/components/navigation/SidebarNav.tsx",
+        "frontend/src/index.css",
         "frontend/src/pages/BusinessAnalyticsPage.tsx",
         "frontend/src/pages/ChatPage.tsx",
         "frontend/src/pages/GalleryPage.tsx",
+        "frontend/src/pages/LoginPage.tsx",
         "frontend/src/pages/MakerLandingPage.tsx",
         "frontend/src/pages/ShopMakerPage.tsx"
       ],
@@ -23,16 +24,22 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-1"
+        "REQ-13"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-apply-a-consistent-professional-visual-theme-across-all-pages-using-a-navy-green-black-gradient-background-direction-with-modern-typography-and-subtle-glow-accents-no-blue-purple-heavy-palette-matching-the-overall-style-of-the-uploaded-references",
-      "featureTitle": "Apply a consistent professional visual theme across all pages using a navy/green/black gradient background direction with modern typography and subtle glow accents (no blue-purple heavy palette), matching the overall style of the uploaded references.",
+      "featureId": "feature-update-the-app-s-color-tokens-and-gradients-to-de-emphasize-purple-including-the-current-primary-accent-hues-in-favor-of-a-light-navy-green-palette-and-apply-these-tokens-consistently-to-headings-cards-borders-and-ui-accents",
+      "featureTitle": "Update the app’s color tokens and gradients to de-emphasize purple (including the current primary/accent hues) in favor of a light navy + green palette, and apply these tokens consistently to headings, cards, borders, and UI accents.",
       "files": [
+        "frontend/src/components/background/ButterflyBackground.tsx",
+        "frontend/src/components/layout/AppHeader.tsx",
         "frontend/src/components/layout/AppShell.tsx",
+        "frontend/src/components/navigation/SidebarNav.tsx",
         "frontend/src/index.css",
+        "frontend/src/pages/BusinessAnalyticsPage.tsx",
+        "frontend/src/pages/ChatPage.tsx",
+        "frontend/src/pages/MakerLandingPage.tsx",
         "frontend/tailwind.config.js"
       ],
       "components": [
@@ -44,17 +51,19 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-2"
+        "REQ-14"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-implement-a-lightweight-butterfly-flying-background-animation-that-appears-on-every-page-without-blocking-ui-interactions-and-with-an-option-to-reduce-motion-respect-prefers-reduced-motion",
-      "featureTitle": "Implement a lightweight butterfly-flying background animation that appears on every page without blocking UI interactions and with an option to reduce motion (respect prefers-reduced-motion).",
+      "featureId": "feature-implement-animated-glowing-button-styling-across-the-app-for-primary-and-key-call-to-action-buttons-while-respecting-prefers-reduced-motion-reduce-disable-glow-animations-when-the-user-requests-reduced-motion",
+      "featureTitle": "Implement animated/glowing button styling across the app for primary and key call-to-action buttons, while respecting prefers-reduced-motion (reduce/disable glow animations when the user requests reduced motion).",
       "files": [
-        "frontend/src/components/background/ButterflyBackground.tsx",
-        "frontend/src/components/layout/AppShell.tsx",
-        "frontend/src/index.css"
+        "frontend/src/index.css",
+        "frontend/src/pages/BusinessAnalyticsPage.tsx",
+        "frontend/src/pages/LoginPage.tsx",
+        "frontend/src/pages/MakerLandingPage.tsx",
+        "frontend/src/pages/ShopMakerPage.tsx"
       ],
       "components": [
         "authorization@4.0.0",
@@ -65,18 +74,16 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-3"
+        "REQ-15"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-implement-authentication-using-internet-identity-and-provide-a-dedicated-login-screen-styled-similarly-to-the-user-s-sketch-simple-centered-card-plus-a-logged-in-state-indicator-in-the-app-shell",
-      "featureTitle": "Implement authentication using Internet Identity, and provide a dedicated login screen styled similarly to the user’s sketch (simple centered card), plus a logged-in state indicator in the app shell.",
+      "featureId": "feature-increase-logo-emphasis-on-the-app-s-front-page-login-screen-and-on-the-authgate-loading-screen-by-adding-a-clearer-larger-logo-wordmark-treatment-and-placing-it-prominently-in-the-layout",
+      "featureTitle": "Increase logo emphasis on the app’s “front page” (Login screen) and on the AuthGate loading screen by adding a clearer, larger logo/wordmark treatment and placing it prominently in the layout.",
       "files": [
-        "frontend/src/App.tsx",
+        "frontend/index.html",
         "frontend/src/components/auth/AuthGate.tsx",
-        "frontend/src/components/auth/ProfileSetupModal.tsx",
-        "frontend/src/components/layout/AppHeader.tsx",
         "frontend/src/components/layout/AppShell.tsx",
         "frontend/src/pages/LoginPage.tsx"
       ],
@@ -89,19 +96,17 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-4"
+        "REQ-16"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-build-the-chat-page-ui-based-on-the-brandboost-style-layout-message-list-area-message-input-and-basic-chat-controls-new-chat-clear-implement-simple-non-ai-responses-rule-based-or-canned-to-keep-the-build-lightweight",
-      "featureTitle": "Build the Chat page UI based on the BrandBoost-style layout: message list area, message input, and basic chat controls (New Chat, Clear). Implement simple non-AI responses (rule-based or canned) to keep the build lightweight.",
+      "featureId": "feature-keep-existing-icons-and-any-current-imagery-unless-a-change-is-necessary-for-readability-consistency-and-ensure-the-ui-remains-icon-forward-rather-than-adding-new-full-size-decorative-images-from-the-brandboost-references-without-explicit-placement-instructions",
+      "featureTitle": "Keep existing icons and any current imagery unless a change is necessary for readability/consistency, and ensure the UI remains icon-forward rather than adding new full-size decorative images from the BrandBoost references without explicit placement instructions.",
       "files": [
-        "frontend/src/components/chat/ChatComposer.tsx",
-        "frontend/src/components/chat/ChatMessageList.tsx",
-        "frontend/src/hooks/useChatSession.ts",
-        "frontend/src/lib/chat/cannedReplies.ts",
-        "frontend/src/pages/ChatPage.tsx"
+        "frontend/src/components/background/ButterflyBackground.tsx",
+        "frontend/src/components/layout/AppShell.tsx",
+        "frontend/src/pages/LoginPage.tsx"
       ],
       "components": [
         "authorization@4.0.0",
@@ -112,109 +117,19 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-5"
+        "REQ-17"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-build-the-photo-video-maker-landing-page-with-a-grid-of-feature-cards-inspired-by-the-uploaded-brandboost-maker-screenshots-include-at-minimum-photo-for-post-and-video-for-reels-shorts-with-get-started-leading-to-their-respective-flows",
-      "featureTitle": "Build the Photo/Video Maker landing page with a grid of feature cards inspired by the uploaded BrandBoost maker screenshots. Include at minimum: Photo for Post and Video for Reels/Shorts, with “Get Started” leading to their respective flows.",
+      "featureId": "feature-investigate-and-fix-the-reported-blank-can-t-see-anything-experience-by-ensuring-the-authenticated-and-unauthenticated-routes-always-render-visible-content-including-during-initialization-and-that-no-page-relies-on-near-black-overlays-that-obscure-content-on-the-updated-light-gradient-background",
+      "featureTitle": "Investigate and fix the reported “blank/Can’t see anything” experience by ensuring the authenticated and unauthenticated routes always render visible content (including during initialization), and that no page relies on near-black overlays that obscure content on the updated light gradient background.",
       "files": [
         "frontend/src/App.tsx",
-        "frontend/src/pages/MakerLandingPage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-6"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-implement-the-photo-for-post-flow-based-on-the-references-a-form-page-to-enter-business-details-company-name-category-product-service-offer-address-contact-additional-details-optional-image-upload-then-a-theme-selection-step-then-a-result-page-that-renders-a-professional-looking-poster-using-templates-client-side-rendering",
-      "featureTitle": "Implement the Photo for Post flow based on the references: a form page to enter business details (company name, category, product/service, offer, address/contact, additional details, optional image upload), then a theme selection step, then a result page that renders a professional-looking poster using templates (client-side rendering).",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/hooks/useGalleryPublish.ts",
-        "frontend/src/hooks/useMakerDraft.ts",
-        "frontend/src/lib/poster/renderPosterToCanvas.ts",
-        "frontend/src/pages/photo-for-post/PhotoDetailsPage.tsx",
-        "frontend/src/pages/photo-for-post/PhotoResultPage.tsx",
-        "frontend/src/pages/photo-for-post/PhotoThemePage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-7"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-implement-the-video-for-reels-shorts-flow-based-on-the-user-sketch-details-form-business-name-service-product-offers-plus-optional-media-a-transitions-style-selection-step-simple-choices-and-a-result-preview-that-plays-a-short-template-animation-client-side-and-allows-export-at-least-as-a-downloadable-mp4-gif-if-feasible-otherwise-provide-a-downloadable-image-sequence-placeholder-export",
-      "featureTitle": "Implement the Video for Reels/Shorts flow based on the user sketch: details form (business name, service/product, offers, plus optional media), a transitions/style selection step (simple choices), and a result preview that plays a short template animation (client-side) and allows export (at least as a downloadable MP4/GIF if feasible, otherwise provide a downloadable image sequence/placeholder export).",
-      "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/video/VideoPreview.tsx",
-        "frontend/src/hooks/useGalleryPublish.ts",
-        "frontend/src/pages/video-for-reels/VideoDetailsPage.tsx",
-        "frontend/src/pages/video-for-reels/VideoResultPage.tsx",
-        "frontend/src/pages/video-for-reels/VideoStylePage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-8"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-build-the-business-analytics-module-inspired-by-the-uploaded-brandboost-analytics-screen-a-financial-input-form-initial-investment-total-revenue-total-costs-cost-breakdown-fields-and-an-analytics-report-view-with-computed-metrics-profit-margin-plus-simple-charts-bar-pie-rendered-client-side",
-      "featureTitle": "Build the Business Analytics module inspired by the uploaded BrandBoost analytics screen: a financial input form (initial investment, total revenue, total costs + cost breakdown fields) and an analytics report view with computed metrics (profit, margin) plus simple charts (bar/pie) rendered client-side.",
-      "files": [
-        "frontend/src/components/charts/BarChart.tsx",
-        "frontend/src/components/charts/PieChart.tsx",
-        "frontend/src/hooks/useGalleryPublish.ts",
-        "frontend/src/hooks/useSavedAnalytics.ts",
-        "frontend/src/lib/analytics/compute.ts",
-        "frontend/src/pages/BusinessAnalyticsPage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-9"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-create-a-gallery-page-inspired-by-the-uploaded-brandboost-gallery-screenshot-with-filter-tabs-all-photos-videos-analytics-and-cards-listing-generated-outputs-with-actions-to-view-and-download",
-      "featureTitle": "Create a Gallery page inspired by the uploaded BrandBoost gallery screenshot with filter tabs (All, Photos, Videos, Analytics) and cards listing generated outputs with actions to view and download.",
-      "files": [
-        "frontend/src/components/gallery/GalleryCard.tsx",
-        "frontend/src/hooks/useGalleryItems.ts",
+        "frontend/src/components/auth/AuthGate.tsx",
+        "frontend/src/components/layout/AppHeader.tsx",
+        "frontend/src/index.css",
+        "frontend/src/pages/ChatPage.tsx",
         "frontend/src/pages/GalleryPage.tsx"
       ],
       "components": [
@@ -226,27 +141,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-10"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-a-shop-maker-placeholder-page-based-on-the-sketch-card-shop-maker-that-explains-it-is-coming-soon-and-includes-a-simple-contact-info-card-layout-no-e-commerce-or-payments",
-      "featureTitle": "Add a Shop Maker placeholder page based on the sketch card (‘Shop maker’) that explains it is coming soon and includes a simple contact/info card layout (no e-commerce or payments).",
-      "files": [
-        "frontend/src/components/navigation/SidebarNav.tsx",
-        "frontend/src/pages/ShopMakerPage.tsx"
-      ],
-      "components": [
-        "authorization@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-12"
+        "REQ-18"
       ],
       "confidence": "high"
     }

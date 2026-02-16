@@ -38,8 +38,8 @@ export default function SidebarNav({ onNavigate }: SidebarNavProps) {
             className={cn(
               'w-full justify-start gap-3 h-12 text-base transition-all duration-200',
               isActive
-                ? 'bg-gradient-to-r from-blue-600/20 to-purple-600/20 text-primary border border-primary/20 shadow-lg shadow-primary/10'
-                : 'hover:bg-primary/5 text-muted-foreground hover:text-foreground'
+                ? 'bg-gradient-to-r from-primary/20 to-secondary/20 text-foreground border border-primary/30 shadow-md'
+                : 'hover:bg-primary/10 text-muted-foreground hover:text-foreground'
             )}
             onClick={() => handleNavigate(item.path)}
           >

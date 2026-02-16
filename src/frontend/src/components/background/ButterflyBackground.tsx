@@ -25,7 +25,7 @@ export default function ButterflyBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden opacity-30" aria-hidden="true">
+    <div className="fixed inset-0 pointer-events-none overflow-hidden opacity-20" aria-hidden="true">
       {butterflies.map((butterfly) => (
         <div
           key={butterfly.id}
@@ -43,7 +43,7 @@ export default function ButterflyBackground() {
             viewBox="0 0 24 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="text-blue-400/40"
+            className="text-primary/30"
           >
             <path
               d="M12 4C10 4 8 6 8 8C8 10 10 12 12 12C14 12 16 10 16 8C16 6 14 4 12 4Z"

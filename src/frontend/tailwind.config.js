@@ -64,8 +64,8 @@ export default {
             },
             boxShadow: {
                 xs: '0 1px 2px 0 rgba(0,0,0,0.05)',
-                glow: '0 0 20px rgba(96, 165, 250, 0.3)',
-                'glow-lg': '0 0 40px rgba(96, 165, 250, 0.4)'
+                glow: '0 0 20px oklch(0.45 0.12 220 / 0.3)',
+                'glow-lg': '0 0 40px oklch(0.45 0.12 220 / 0.4)'
             },
             fontFamily: {
                 sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif']

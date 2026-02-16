@@ -1,14 +1,17 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 3,
-  "summary": "Multi-page professional web app based on user's sketches and provided screenshots, with a navy/green/black gradient theme, animated glowing UI, and butterfly background animation on every page. Includes authentication and key modules like business analytics plus professional photo/video generation (AI generation + templates/animations) backed by a database.",
+  "projectStateVersion": 5,
+  "summary": "Multi-page professional web app based on user's sketches and provided screenshots, updated to use a lighter navy/green gradient across the entire app with animated/glowing buttons and stronger logo emphasis—especially on the front/landing and loading pages—while keeping existing icons/images unless changes are needed. Includes authentication and key modules like business analytics plus professional photo/video generation (AI generation + templates/animations) backed by a database.",
   "architectural_notes": [
-    "App scope may exceed platform size limits; consider modularizing/simplifying features if build fails due to size."
+    "App scope may exceed platform size limits; consider modularizing/simplifying features if build fails due to size.",
+    "Global theme direction changed: replace darker navy/green/black gradient with a lighter navy/green gradient across the entire app; keep existing icons/images unless changes are needed; emphasize logo on landing/front and loading pages."
   ],
   "known_issues": [
-    "Previous build attempt failed due to app being too large/complex for the platform to process."
+    "Previous build attempt failed due to app being too large/complex for the platform to process.",
+    "User reports the current draft appears blank/they \"can't see anything\"; investigate visibility/rendering/contrast issues so the UI reliably displays."
   ],
-  "isFixRequest": false,
+  "isFixRequest": true,
+  "imageRequirements": "## Required Images\n- Modern minimal monogram logo with navy + green palette on transparent background (busy-ai-logo.dim_512x512.png)\n- Horizontal wordmark/logo lockup in navy + green on transparent background (busy-ai-wordmark.dim_1200x300.png)\n- Simple favicon mark derived from the monogram in navy + green (busy-ai-favicon.dim_64x64.png)",
   "existing_features": [
     {
       "id": "feature-create-the-app-shell-responsive-with-a-left-sidebar-navigation-inspired-by-the-uploaded-brandboost-screenshots-including-routes-pages-for-chat-photo-video-maker-business-analytics-gallery-and-shop-maker-placeholder",
@@ -97,6 +100,54 @@
         "REQ-12"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-replace-the-current-dark-blue-purple-heavy-global-backgrounds-with-a-lighter-readable-navy-green-gradient-across-the-entire-app-appshell-login-page-and-authgate-loading-screen-ensuring-text-and-surfaces-maintain-strong-contrast-and-are-clearly-visible",
+      "title": "Replace the current dark blue/purple-heavy global backgrounds with a lighter, readable navy/green gradient across the entire app (AppShell, Login page, and AuthGate loading screen), ensuring text and surfaces maintain strong contrast and are clearly visible.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-app-s-color-tokens-and-gradients-to-de-emphasize-purple-including-the-current-primary-accent-hues-in-favor-of-a-light-navy-green-palette-and-apply-these-tokens-consistently-to-headings-cards-borders-and-ui-accents",
+      "title": "Update the app’s color tokens and gradients to de-emphasize purple (including the current primary/accent hues) in favor of a light navy + green palette, and apply these tokens consistently to headings, cards, borders, and UI accents.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-animated-glowing-button-styling-across-the-app-for-primary-and-key-call-to-action-buttons-while-respecting-prefers-reduced-motion-reduce-disable-glow-animations-when-the-user-requests-reduced-motion",
+      "title": "Implement animated/glowing button styling across the app for primary and key call-to-action buttons, while respecting prefers-reduced-motion (reduce/disable glow animations when the user requests reduced motion).",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-increase-logo-emphasis-on-the-app-s-front-page-login-screen-and-on-the-authgate-loading-screen-by-adding-a-clearer-larger-logo-wordmark-treatment-and-placing-it-prominently-in-the-layout",
+      "title": "Increase logo emphasis on the app’s “front page” (Login screen) and on the AuthGate loading screen by adding a clearer, larger logo/wordmark treatment and placing it prominently in the layout.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-keep-existing-icons-and-any-current-imagery-unless-a-change-is-necessary-for-readability-consistency-and-ensure-the-ui-remains-icon-forward-rather-than-adding-new-full-size-decorative-images-from-the-brandboost-references-without-explicit-placement-instructions",
+      "title": "Keep existing icons and any current imagery unless a change is necessary for readability/consistency, and ensure the UI remains icon-forward rather than adding new full-size decorative images from the BrandBoost references without explicit placement instructions.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-investigate-and-fix-the-reported-blank-can-t-see-anything-experience-by-ensuring-the-authenticated-and-unauthenticated-routes-always-render-visible-content-including-during-initialization-and-that-no-page-relies-on-near-black-overlays-that-obscure-content-on-the-updated-light-gradient-background",
+      "title": "Investigate and fix the reported “blank/Can’t see anything” experience by ensuring the authenticated and unauthenticated routes always render visible content (including during initialization), and that no page relies on near-black overlays that obscure content on the updated light gradient background.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -148,6 +199,12 @@
       "reqIds": [
         "REQ-11"
       ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-19",
+      "summary": "Update global UI styling to a lighter navy/green gradient across all pages with animated/glowing buttons, and increase logo emphasis on the landing/front page and loading page",
+      "reqIds": [],
       "status": "pending"
     }
   ],

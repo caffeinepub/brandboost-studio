@@ -20,41 +20,49 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-10" />
+    <div className="min-h-screen flex items-center justify-center app-gradient-bg relative overflow-hidden">
+      <div className="absolute inset-0 bg-[url('/grid.svg')] opacity-5" />
       
-      <Card className="w-full max-w-md mx-4 backdrop-blur-sm bg-card/80 border-primary/20 shadow-2xl">
-        <CardHeader className="space-y-3 text-center">
-          <div className="mx-auto w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center mb-2">
-            <span className="text-3xl font-bold text-white">BA</span>
-          </div>
-          <CardTitle className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-            Busy AI
-          </CardTitle>
-          <CardDescription className="text-base">
-            Your professional business assistant for marketing, analytics, and content creation
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <Button
-            onClick={handleLogin}
-            disabled={loginStatus === 'logging-in'}
-            className="w-full h-12 text-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg hover:shadow-xl transition-all duration-300"
-          >
-            {loginStatus === 'logging-in' ? (
-              <>
-                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                Connecting...
-              </>
-            ) : (
-              'Sign In with Internet Identity'
-            )}
-          </Button>
-          <p className="text-xs text-center text-muted-foreground">
-            Secure authentication powered by Internet Computer
-          </p>
-        </CardContent>
-      </Card>
+      <div className="w-full max-w-md mx-4 space-y-8">
+        {/* Logo/Wordmark */}
+        <div className="text-center">
+          <img 
+            src="/assets/generated/busy-ai-wordmark.dim_1200x300.png" 
+            alt="Busy AI" 
+            className="h-16 mx-auto mb-4"
+          />
+        </div>
+
+        <Card className="backdrop-blur-sm bg-card/90 border-primary/30 shadow-2xl">
+          <CardHeader className="space-y-3 text-center">
+            <CardTitle className="text-3xl font-bold text-foreground">
+              Welcome to Busy AI
+            </CardTitle>
+            <CardDescription className="text-base text-muted-foreground">
+              Your professional business assistant for marketing, analytics, and content creation
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <Button
+              onClick={handleLogin}
+              disabled={loginStatus === 'logging-in'}
+              className="btn-glow w-full h-12 text-lg font-semibold text-primary-foreground"
+            >
+              {loginStatus === 'logging-in' ? (
+                <>
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                  Connecting...
+                </>
+              ) : (
+                'Sign In with Internet Identity'
+              )}
+            </Button>
+            <p className="text-xs text-center text-muted-foreground">
+              Secure authentication powered by Internet Computer
+            </p>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

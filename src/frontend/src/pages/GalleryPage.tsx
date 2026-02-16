@@ -13,12 +13,12 @@ export default function GalleryPage() {
   return (
     <div className="max-w-7xl mx-auto space-y-6">
       <div>
-        <h1 className="text-3xl font-bold">Gallery</h1>
+        <h1 className="text-3xl font-bold text-foreground">Gallery</h1>
         <p className="text-muted-foreground mt-2">View and manage all your generated content</p>
       </div>
 
       <Tabs value={activeTab} onValueChange={(v) => setActiveTab(v as any)} className="w-full">
-        <TabsList className="bg-slate-900/50 border border-primary/20">
+        <TabsList className="bg-muted/50 border border-primary/30">
           <TabsTrigger value="all">All</TabsTrigger>
           <TabsTrigger value="photo">Photos</TabsTrigger>
           <TabsTrigger value="video">Videos</TabsTrigger>
@@ -37,7 +37,7 @@ export default function GalleryPage() {
               ))}
             </div>
           ) : (
-            <Card className="border-primary/20 bg-slate-950/50 backdrop-blur-sm">
+            <Card className="border-primary/30 bg-card/80 backdrop-blur-sm">
               <CardContent className="py-12 text-center text-muted-foreground">
                 No items found. Start creating content to see it here!
               </CardContent>

@@ -19,17 +19,33 @@ export default function AuthGate({ children }: AuthGateProps) {
 
   if (isInitializing) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900">
-        <div className="text-center space-y-4">
+      <div className="min-h-screen flex flex-col items-center justify-center app-gradient-bg">
+        <div className="text-center space-y-6">
+          <img 
+            src="/assets/generated/busy-ai-logo.dim_512x512.png" 
+            alt="Busy AI" 
+            className="h-24 w-24 mx-auto mb-4"
+          />
           <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto" />
-          <p className="text-muted-foreground">Loading...</p>
+          <p className="text-foreground font-medium text-lg">Loading Busy AI...</p>
         </div>
       </div>
     );
   }
 
   if (!identity) {
-    return null;
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center app-gradient-bg">
+        <div className="text-center space-y-6">
+          <img 
+            src="/assets/generated/busy-ai-logo.dim_512x512.png" 
+            alt="Busy AI" 
+            className="h-24 w-24 mx-auto mb-4"
+          />
+          <p className="text-foreground font-medium text-lg">Redirecting to sign in...</p>
+        </div>
+      </div>
+    );
   }
 
   return <>{children}</>;

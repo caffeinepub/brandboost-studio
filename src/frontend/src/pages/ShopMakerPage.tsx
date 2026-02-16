@@ -6,26 +6,26 @@ export default function ShopMakerPage() {
   return (
     <div className="max-w-4xl mx-auto space-y-6">
       <div>
-        <h1 className="text-3xl font-bold">Shop Maker</h1>
+        <h1 className="text-3xl font-bold text-foreground">Shop Maker</h1>
         <p className="text-muted-foreground mt-2">Build your online shopping experience</p>
       </div>
 
-      <Card className="border-primary/20 bg-slate-950/50 backdrop-blur-sm text-center">
+      <Card className="border-primary/30 bg-card/80 backdrop-blur-sm text-center">
         <CardHeader className="space-y-4 pb-8">
           <div className="mx-auto w-20 h-20 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center">
             <ShoppingBag className="h-10 w-10 text-white" />
           </div>
-          <CardTitle className="text-3xl">Coming Soon</CardTitle>
+          <CardTitle className="text-3xl text-foreground">Coming Soon</CardTitle>
           <CardDescription className="text-lg">
             We're working on an amazing shop builder to help you create your online store with ease
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6 pb-8">
           <div className="grid md:grid-cols-2 gap-4 text-left">
-            <Card className="border-primary/20 bg-slate-900/50">
+            <Card className="border-primary/30 bg-muted/50">
               <CardHeader>
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <ShoppingBag className="h-5 w-5 text-green-400" />
+                <CardTitle className="text-lg flex items-center gap-2 text-foreground">
+                  <ShoppingBag className="h-5 w-5 text-green-600" />
                   Product Management
                 </CardTitle>
               </CardHeader>
@@ -36,10 +36,10 @@ export default function ShopMakerPage() {
               </CardContent>
             </Card>
 
-            <Card className="border-primary/20 bg-slate-900/50">
+            <Card className="border-primary/30 bg-muted/50">
               <CardHeader>
-                <CardTitle className="text-lg flex items-center gap-2">
-                  <Calendar className="h-5 w-5 text-blue-400" />
+                <CardTitle className="text-lg flex items-center gap-2 text-foreground">
+                  <Calendar className="h-5 w-5 text-primary" />
                   Order Tracking
                 </CardTitle>
               </CardHeader>
@@ -55,7 +55,7 @@ export default function ShopMakerPage() {
             <p className="text-sm text-muted-foreground mb-4">
               Want to be notified when Shop Maker launches?
             </p>
-            <Button className="bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 shadow-lg gap-2">
+            <Button className="btn-glow gap-2 text-primary-foreground">
               <Mail className="h-4 w-4" />
               Notify Me
             </Button>

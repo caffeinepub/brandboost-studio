@@ -15,28 +15,28 @@ export default function ChatPage() {
     <div className="max-w-5xl mx-auto space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+          <h1 className="text-3xl font-bold text-foreground">
             Welcome to Marketing
           </h1>
-          <p className="text-xl text-purple-400 mt-1">Busy AI</p>
+          <p className="text-xl text-primary mt-1">Busy AI</p>
           <p className="text-muted-foreground mt-2">Welcome to Chat</p>
         </div>
         <div className="flex gap-2">
-          <Button variant="outline" onClick={newChat} className="gap-2 border-primary/20 hover:bg-primary/5">
+          <Button variant="outline" onClick={newChat} className="gap-2 border-primary/30 hover:bg-primary/10">
             <Plus className="h-4 w-4" />
             New Chat
           </Button>
-          <Button variant="outline" onClick={clearMessages} className="gap-2 border-primary/20 hover:bg-primary/5">
+          <Button variant="outline" onClick={clearMessages} className="gap-2 border-primary/30 hover:bg-primary/10">
             <Trash2 className="h-4 w-4" />
             Clear Chat
           </Button>
         </div>
       </div>
 
-      <Card className="border-primary/20 bg-slate-950/50 backdrop-blur-sm shadow-xl">
+      <Card className="border-primary/30 bg-card/80 backdrop-blur-sm shadow-xl">
         <CardContent className="p-0">
           <ChatMessageList messages={messages} />
-          <div className="border-t border-primary/10 p-4">
+          <div className="border-t border-primary/20 p-4">
             <ChatComposer onSend={sendMessage} />
           </div>
         </CardContent>

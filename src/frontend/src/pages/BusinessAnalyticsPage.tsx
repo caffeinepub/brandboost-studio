@@ -43,14 +43,14 @@ export default function BusinessAnalyticsPage() {
   return (
     <div className="max-w-6xl mx-auto space-y-6">
       <div>
-        <h1 className="text-3xl font-bold">Business Analytics</h1>
+        <h1 className="text-3xl font-bold text-foreground">Business Analytics</h1>
         <p className="text-muted-foreground mt-2">Analyze your business financial performance</p>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-6">
-        <Card className="border-primary/20 bg-slate-950/50 backdrop-blur-sm">
+        <Card className="border-primary/30 bg-card/80 backdrop-blur-sm">
           <CardHeader>
-            <CardTitle>Enter Your Financial Data</CardTitle>
+            <CardTitle className="text-foreground">Enter Your Financial Data</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
@@ -60,7 +60,7 @@ export default function BusinessAnalyticsPage() {
                 type="number"
                 value={formData.initialInvestment}
                 onChange={(e) => handleChange('initialInvestment', e.target.value)}
-                className="bg-slate-900/50 border-primary/20"
+                className="bg-muted/50 border-primary/30"
               />
             </div>
 
@@ -71,7 +71,7 @@ export default function BusinessAnalyticsPage() {
                 type="number"
                 value={formData.totalRevenue}
                 onChange={(e) => handleChange('totalRevenue', e.target.value)}
-                className="bg-slate-900/50 border-primary/20"
+                className="bg-muted/50 border-primary/30"
               />
             </div>
 
@@ -82,12 +82,12 @@ export default function BusinessAnalyticsPage() {
                 type="number"
                 value={formData.totalCosts}
                 onChange={(e) => handleChange('totalCosts', e.target.value)}
-                className="bg-slate-900/50 border-primary/20"
+                className="bg-muted/50 border-primary/30"
               />
             </div>
 
-            <div className="pt-4 border-t border-primary/10">
-              <h3 className="font-semibold mb-4">Cost Breakdown</h3>
+            <div className="pt-4 border-t border-primary/20">
+              <h3 className="font-semibold mb-4 text-foreground">Cost Breakdown</h3>
               <div className="space-y-3">
                 <div className="space-y-2">
                   <Label htmlFor="marketing">Marketing ($)</Label>
@@ -96,7 +96,7 @@ export default function BusinessAnalyticsPage() {
                     type="number"
                     value={formData.marketing}
                     onChange={(e) => handleChange('marketing', e.target.value)}
-                    className="bg-slate-900/50 border-primary/20"
+                    className="bg-muted/50 border-primary/30"
                   />
                 </div>
                 <div className="space-y-2">
@@ -106,7 +106,7 @@ export default function BusinessAnalyticsPage() {
                     type="number"
                     value={formData.operations}
                     onChange={(e) => handleChange('operations', e.target.value)}
-                    className="bg-slate-900/50 border-primary/20"
+                    className="bg-muted/50 border-primary/30"
                   />
                 </div>
                 <div className="space-y-2">
@@ -116,7 +116,7 @@ export default function BusinessAnalyticsPage() {
                     type="number"
                     value={formData.other}
                     onChange={(e) => handleChange('other', e.target.value)}
-                    className="bg-slate-900/50 border-primary/20"
+                    className="bg-muted/50 border-primary/30"
                   />
                 </div>
               </div>
@@ -124,7 +124,7 @@ export default function BusinessAnalyticsPage() {
 
             <Button
               onClick={handleGenerate}
-              className="w-full h-12 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg"
+              className="btn-glow w-full h-12 text-primary-foreground"
             >
               Generate Analytics
             </Button>
@@ -133,43 +133,43 @@ export default function BusinessAnalyticsPage() {
 
         {results && (
           <div className="space-y-6">
-            <Card className="border-primary/20 bg-slate-950/50 backdrop-blur-sm">
+            <Card className="border-primary/30 bg-card/80 backdrop-blur-sm">
               <CardHeader>
-                <CardTitle>Financial Summary</CardTitle>
+                <CardTitle className="text-foreground">Financial Summary</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-slate-900/50 rounded-lg p-4">
+                  <div className="bg-muted/50 rounded-lg p-4">
                     <p className="text-sm text-muted-foreground">Profit</p>
-                    <p className="text-2xl font-bold text-green-400">${results.profit}</p>
+                    <p className="text-2xl font-bold text-green-600">${results.profit}</p>
                   </div>
-                  <div className="bg-slate-900/50 rounded-lg p-4">
+                  <div className="bg-muted/50 rounded-lg p-4">
                     <p className="text-sm text-muted-foreground">Profit Margin</p>
-                    <p className="text-2xl font-bold text-blue-400">{results.profitMargin}%</p>
+                    <p className="text-2xl font-bold text-primary">{results.profitMargin}%</p>
                   </div>
                 </div>
                 <Button
                   onClick={handleSaveToGallery}
                   variant="outline"
-                  className="w-full border-primary/20 hover:bg-primary/5"
+                  className="w-full border-primary/30 hover:bg-primary/10"
                 >
                   Save to Gallery
                 </Button>
               </CardContent>
             </Card>
 
-            <Card className="border-primary/20 bg-slate-950/50 backdrop-blur-sm">
+            <Card className="border-primary/30 bg-card/80 backdrop-blur-sm">
               <CardHeader>
-                <CardTitle>Revenue vs Costs</CardTitle>
+                <CardTitle className="text-foreground">Revenue vs Costs</CardTitle>
               </CardHeader>
               <CardContent>
                 <BarChart data={results.barData} />
               </CardContent>
             </Card>
 
-            <Card className="border-primary/20 bg-slate-950/50 backdrop-blur-sm">
+            <Card className="border-primary/30 bg-card/80 backdrop-blur-sm">
               <CardHeader>
-                <CardTitle>Cost Breakdown</CardTitle>
+                <CardTitle className="text-foreground">Cost Breakdown</CardTitle>
               </CardHeader>
               <CardContent>
                 <PieChart data={results.pieData} />

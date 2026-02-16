@@ -14,16 +14,18 @@ export default function AppShell({ children }: AppShellProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 relative">
+    <div className="min-h-screen app-gradient-bg relative">
       <ButterflyBackground />
       
       <div className="flex h-screen relative z-10">
         {/* Desktop Sidebar */}
-        <aside className="hidden lg:flex w-64 flex-col border-r border-primary/10 bg-slate-950/50 backdrop-blur-sm">
-          <div className="p-6 border-b border-primary/10">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-              Busy AI
-            </h1>
+        <aside className="hidden lg:flex w-64 flex-col border-r border-primary/20 bg-card/60 backdrop-blur-sm">
+          <div className="p-6 border-b border-primary/20">
+            <img 
+              src="/assets/generated/busy-ai-wordmark.dim_1200x300.png" 
+              alt="Busy AI" 
+              className="h-10 w-auto"
+            />
           </div>
           <SidebarNav />
         </aside>
@@ -31,15 +33,17 @@ export default function AppShell({ children }: AppShellProps) {
         {/* Mobile Sidebar */}
         <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
           <SheetTrigger asChild className="lg:hidden fixed top-4 left-4 z-50">
-            <Button variant="outline" size="icon" className="bg-slate-950/80 backdrop-blur-sm border-primary/20">
+            <Button variant="outline" size="icon" className="bg-card/80 backdrop-blur-sm border-primary/30">
               <Menu className="h-5 w-5" />
             </Button>
           </SheetTrigger>
-          <SheetContent side="left" className="w-64 p-0 bg-slate-950/95 backdrop-blur-sm border-primary/20">
-            <div className="p-6 border-b border-primary/10">
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                Busy AI
-              </h1>
+          <SheetContent side="left" className="w-64 p-0 bg-card/95 backdrop-blur-sm border-primary/30">
+            <div className="p-6 border-b border-primary/20">
+              <img 
+                src="/assets/generated/busy-ai-wordmark.dim_1200x300.png" 
+                alt="Busy AI" 
+                className="h-10 w-auto"
+              />
             </div>
             <SidebarNav onNavigate={() => setMobileOpen(false)} />
           </SheetContent>
