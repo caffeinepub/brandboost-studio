@@ -1,0 +1,96 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-update-the-global-app-background-so-appshell-loginpage-authgate-loading-redirect-screens-and-all-routes-consistently-use-the-same-medium-blue-green-gradient-no-near-white-washout-and-no-purple-heavy-gradients",
+      "featureTitle": "Update the global app background so AppShell, LoginPage, AuthGate loading/redirect screens, and all routes consistently use the same medium blue-green gradient (no near-white washout and no purple-heavy gradients).",
+      "files": [
+        "frontend/src/components/auth/AuthGate.tsx",
+        "frontend/src/components/layout/AppShell.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-19"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-make-all-user-visible-text-across-the-app-use-very-dark-colors-by-default-avoid-white-text-including-headings-descriptions-placeholders-tab-labels-nav-labels-and-empty-states-while-keeping-sufficient-contrast-over-the-medium-blue-green-gradient",
+      "featureTitle": "Make all user-visible text across the app use very dark colors by default (avoid white text), including headings, descriptions, placeholders, tab labels, nav labels, and empty states, while keeping sufficient contrast over the medium blue-green gradient.",
+      "files": [
+        "frontend/src/index.css",
+        "frontend/src/pages/BusinessAnalyticsPage.tsx",
+        "frontend/src/pages/MakerLandingPage.tsx",
+        "frontend/src/pages/ShopMakerPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-20"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-all-icons-use-the-same-dark-color-style-as-the-text-no-white-icons-including-sidebar-navigation-icons-header-menu-icons-loading-spinner-iconography-chat-avatars-icons-and-gallery-card-icons",
+      "featureTitle": "Ensure all icons use the same dark color style as the text (no white icons), including sidebar navigation icons, header/menu icons, loading spinner/iconography, chat avatars/icons, and gallery card icons.",
+      "files": [
+        "frontend/src/components/auth/AuthGate.tsx",
+        "frontend/src/components/chat/ChatMessageList.tsx",
+        "frontend/src/components/gallery/GalleryCard.tsx",
+        "frontend/src/components/layout/AppShell.tsx",
+        "frontend/src/components/navigation/SidebarNav.tsx",
+        "frontend/src/pages/MakerLandingPage.tsx",
+        "frontend/src/pages/ShopMakerPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-21"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-remove-remaining-hard-coded-blue-purple-gradient-styling-and-overly-dark-black-surfaces-that-conflict-with-the-new-unified-medium-blue-green-theme-ensuring-cards-panels-remain-readable-without-making-the-app-look-blank",
+      "featureTitle": "Remove remaining hard-coded blue/purple gradient styling and overly-dark/black surfaces that conflict with the new unified medium blue-green theme, ensuring cards/panels remain readable without making the app look blank.",
+      "files": [
+        "frontend/src/components/chat/ChatComposer.tsx",
+        "frontend/src/components/chat/ChatMessageList.tsx",
+        "frontend/src/components/gallery/GalleryCard.tsx",
+        "frontend/src/index.css",
+        "frontend/src/pages/MakerLandingPage.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-22"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

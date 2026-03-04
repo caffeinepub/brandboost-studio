@@ -1,0 +1,99 @@
+{
+  "kind": "build_request",
+  "title": "Unify medium blue-green background and enforce dark text/icon contrast across all pages",
+  "projectName": "Busy AI",
+  "priority": "high",
+  "requirements": [
+    {
+      "id": "REQ-19",
+      "text": "Update the global app background so AppShell, LoginPage, AuthGate loading/redirect screens, and all routes consistently use the same medium blue-green gradient (no near-white washout and no purple-heavy gradients).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Any thing medium gradient like blue green or any and the fonts all should be very dark in all pages  background",
+          "Yes all should be the same background no icons should be in same color starf building"
+        ]
+      },
+      "acceptanceCriteria": [
+        "All major shells/screens (AppShell layout, LoginPage, AuthGate initializing/redirect views) visibly share the same gradient background treatment.",
+        "The background is a medium-intensity blue-green gradient (not white/blank-looking, not purple-heavy).",
+        "No screen renders as a plain white/near-white background by default."
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "text": "Make all user-visible text across the app use very dark colors by default (avoid white text), including headings, descriptions, placeholders, tab labels, nav labels, and empty states, while keeping sufficient contrast over the medium blue-green gradient.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Then make the fonts and the options darker I don't want white color yaar",
+          "Any thing medium gradient like blue green or any and the fonts all should be very dark in all pages  background"
+        ]
+      },
+      "acceptanceCriteria": [
+        "No primary UI text relies on white text for readability (e.g., remove hardcoded \"text-white\" usage in app content).",
+        "Typography remains clearly readable on every page (Chat, Maker, Analytics, Gallery, Shop, Login) without appearing washed out.",
+        "Muted/supporting text remains readable (still dark enough to be visible)."
+      ]
+    },
+    {
+      "id": "REQ-21",
+      "text": "Ensure all icons use the same dark color style as the text (no white icons), including sidebar navigation icons, header/menu icons, loading spinner/iconography, chat avatars/icons, and gallery card icons.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Yes all should be the same background no icons should be in same color starf building"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Sidebar icons and labels appear in a consistent dark tone in both active and inactive states (inactive can be slightly lighter but still dark/visible).",
+        "AuthGate loader/spinner and any lucide icons render in dark tones (no white icons).",
+        "Chat UI does not render assistant/user icons in forced white; icons follow the dark icon rule.",
+        "Gallery item icons follow the dark icon rule and remain visible against their containers."
+      ]
+    },
+    {
+      "id": "REQ-22",
+      "text": "Remove remaining hard-coded blue/purple gradient styling and overly-dark/black surfaces that conflict with the new unified medium blue-green theme, ensuring cards/panels remain readable without making the app look blank.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "Hey only white background is visible I can't see anything in the Web what bro it's very wrong bro",
+          "Any thing medium gradient like blue green or any and the fonts all should be very dark in all pages  background"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Chat bubbles/avatars do not use blue-to-purple gradients or slate-950/near-black panels that reduce theme consistency.",
+        "Gallery cards do not use near-black backgrounds that fight the global medium gradient; cards remain clearly separated from the background with borders/shadows/tint.",
+        "The app maintains a consistent blue-green visual language across pages (no purple-heavy accents remaining in core UI surfaces)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit files under frontend/src/components/ui (shadcn UI sources); compose and override styling via className/theme tokens instead.",
+    "Do not modify frontend immutable paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui.",
+    "Keep prefers-reduced-motion behavior intact for existing animations (e.g., button glow, butterfly animation).",
+    "Backend must remain a single Motoko actor; no backend changes are required for this visual/contrast fix."
+  ],
+  "nonGoals": [
+    "Do not add new pages or features beyond visual/theme/contrast consistency.",
+    "Do not introduce third-party UI libraries or change routing/auth flows.",
+    "Do not create new icon sets; continue using existing lucide-react icons, only adjust their colors/styles."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

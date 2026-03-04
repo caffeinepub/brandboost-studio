@@ -1,0 +1,157 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Unify medium blue-green gradient background and enforce dark text/icon contrast across Busy AI",
+  "requirements": [
+    {
+      "id": "REQ-19",
+      "summary": "Unify all major shells/screens and routes under a consistent medium-intensity blue-green gradient background with no near-white or purple-heavy washout.",
+      "acceptanceCriteria": [
+        "All major shells/screens (AppShell layout, LoginPage, AuthGate initializing/redirect views) visibly share the same gradient background treatment.",
+        "The background is a medium-intensity blue-green gradient (not white/blank-looking, not purple-heavy).",
+        "No screen renders as a plain white/near-white background by default."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update the global background styling so the default document/body background and the shared .app-gradient-bg utility use the same medium-intensity blue-green gradient (avoid near-white stops and remove any purple bias), ensuring a consistent non-white baseline even before route-level layout renders."
+        },
+        {
+          "path": "frontend/src/components/layout/AppShell.tsx",
+          "operation": "modify",
+          "description": "Ensure AppShell’s outer wrapper remains the single source of truth for applying the unified .app-gradient-bg background across all authenticated routes, and remove/avoid any competing background classes that could cause washout."
+        },
+        {
+          "path": "frontend/src/components/auth/AuthGate.tsx",
+          "operation": "modify",
+          "description": "Align AuthGate initializing and redirect screens to the same unified .app-gradient-bg background and ensure no additional overlay/background causes the screen to appear plain white/near-white."
+        },
+        {
+          "path": "frontend/src/pages/LoginPage.tsx",
+          "operation": "modify",
+          "description": "Align LoginPage with the unified .app-gradient-bg background and adjust/remove any extra background overlay that could visually lighten the page into a near-white/blank-looking state."
+        }
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "summary": "Make all user-visible text default to very dark tones (not white) while maintaining readability over the medium blue-green gradient across all pages.",
+      "acceptanceCriteria": [
+        "No primary UI text relies on white text for readability (e.g., remove hardcoded \"text-white\" usage in app content).",
+        "Typography remains clearly readable on every page (Chat, Maker, Analytics, Gallery, Shop, Login) without appearing washed out.",
+        "Muted/supporting text remains readable (still dark enough to be visible)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Adjust theme tokens (e.g., --foreground, --muted-foreground, and *-foreground tokens used by buttons/badges) so default typography renders in very dark tones and supporting text remains dark enough over the new medium gradient; keep prefers-reduced-motion behavior intact for existing animations."
+        },
+        {
+          "path": "frontend/src/pages/LoginPage.tsx",
+          "operation": "modify",
+          "description": "Remove reliance on light/white button text (e.g., text-primary-foreground on gradient buttons) by switching to dark text styling that remains readable on the updated medium blue-green theme."
+        },
+        {
+          "path": "frontend/src/pages/BusinessAnalyticsPage.tsx",
+          "operation": "modify",
+          "description": "Update any remaining button and emphasis text styling that depends on light/white foreground tokens (e.g., btn-glow usage with text-primary-foreground) so all visible text defaults to very dark and remains readable."
+        },
+        {
+          "path": "frontend/src/pages/MakerLandingPage.tsx",
+          "operation": "modify",
+          "description": "Update feature card and CTA text styling to avoid white text and ensure headings, descriptions, and button labels use dark tones that stay readable over the medium gradient."
+        },
+        {
+          "path": "frontend/src/pages/ShopMakerPage.tsx",
+          "operation": "modify",
+          "description": "Update any remaining highlighted/CTA areas that use white text by default (e.g., btn-glow button text) so all user-visible text uses dark tones while preserving clarity."
+        }
+      ]
+    },
+    {
+      "id": "REQ-21",
+      "summary": "Standardize icons across the app to use the same dark color style as text (no white icons), including navigation, loaders, chat, and gallery icons.",
+      "acceptanceCriteria": [
+        "Sidebar icons and labels appear in a consistent dark tone in both active and inactive states (inactive can be slightly lighter but still dark/visible).",
+        "AuthGate loader/spinner and any lucide icons render in dark tones (no white icons).",
+        "Chat UI does not render assistant/user icons in forced white; icons follow the dark icon rule.",
+        "Gallery item icons follow the dark icon rule and remain visible against their containers."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/auth/AuthGate.tsx",
+          "operation": "modify",
+          "description": "Change the AuthGate loader/spinner and any related iconography to render in a dark tone (e.g., use foreground-based icon coloring) rather than lighter/white styling."
+        },
+        {
+          "path": "frontend/src/components/navigation/SidebarNav.tsx",
+          "operation": "modify",
+          "description": "Ensure lucide-react sidebar icons inherit the same dark tone as labels in both active/inactive states, avoiding any implicit white icon styling and keeping inactive still dark/visible."
+        },
+        {
+          "path": "frontend/src/components/layout/AppShell.tsx",
+          "operation": "modify",
+          "description": "Ensure header/menu icons (e.g., the mobile Menu icon button) render with dark icon styling consistent with the app’s text color (no white icons)."
+        },
+        {
+          "path": "frontend/src/components/chat/ChatMessageList.tsx",
+          "operation": "modify",
+          "description": "Remove forced white chat icons (e.g., Bot icon with text-white) and ensure both assistant/user iconography uses dark tones consistent with the updated text color rules."
+        },
+        {
+          "path": "frontend/src/components/gallery/GalleryCard.tsx",
+          "operation": "modify",
+          "description": "Update gallery card icon styling (type icon, view/download icons) so icons render in dark tones and remain visible against their containers without using white."
+        },
+        {
+          "path": "frontend/src/pages/MakerLandingPage.tsx",
+          "operation": "modify",
+          "description": "Update maker feature icons that are currently forced to white so they adopt the app’s dark icon style while maintaining visibility on their background containers."
+        },
+        {
+          "path": "frontend/src/pages/ShopMakerPage.tsx",
+          "operation": "modify",
+          "description": "Update any remaining forced white icons (e.g., the coming-soon hero icon) to use the same dark icon style as text and remain visible on the updated theme surfaces."
+        }
+      ]
+    },
+    {
+      "id": "REQ-22",
+      "summary": "Remove remaining purple/blue gradient styling and overly-dark/black surfaces that conflict with the new medium blue-green theme while keeping cards/panels readable and distinct.",
+      "acceptanceCriteria": [
+        "Chat bubbles/avatars do not use blue-to-purple gradients or slate-950/near-black panels that reduce theme consistency.",
+        "Gallery cards do not use near-black backgrounds that fight the global medium gradient; cards remain clearly separated from the background with borders/shadows/tint.",
+        "The app maintains a consistent blue-green visual language across pages (no purple-heavy accents remaining in core UI surfaces)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/chat/ChatMessageList.tsx",
+          "operation": "modify",
+          "description": "Replace blue-to-purple gradient chat bubbles and near-black assistant panels with blue-green-aligned, lighter tinted surfaces that keep dark text readable and maintain consistent theme language."
+        },
+        {
+          "path": "frontend/src/components/chat/ChatComposer.tsx",
+          "operation": "modify",
+          "description": "Remove purple-heavy/near-black styling (e.g., dark input background and blue-to-purple send button gradient) and restyle input/button surfaces to match the medium blue-green theme with dark text/icons."
+        },
+        {
+          "path": "frontend/src/components/gallery/GalleryCard.tsx",
+          "operation": "modify",
+          "description": "Replace the near-black gallery card background (e.g., bg-slate-950/50) and purple-heavy/pink/orange gradient accents with blue-green-consistent surfaces, borders, and subtle tints/shadows that keep the card readable and separated from the global gradient."
+        },
+        {
+          "path": "frontend/src/pages/MakerLandingPage.tsx",
+          "operation": "modify",
+          "description": "Update maker feature accent gradients and icon containers to remove purple-heavy accents (e.g., pink-to-purple) and align highlights with the blue-green visual language while keeping cards distinct."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Update shared gradient utilities (e.g., .btn-glow and any reusable gradient helpers) to avoid purple-heavy accents and support the medium blue-green theme without introducing overly-dark/black surfaces."
+        }
+      ]
+    }
+  ]
+}

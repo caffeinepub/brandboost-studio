@@ -1,0 +1,74 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-16T23:29:01.929Z",
+  "summary": "Diff implements a new global medium blue-green gradient utility (`.app-gradient-bg`) and applies it to AppShell and AuthGate loading/redirect views, plus updates multiple pages/components to use `text-foreground`/`text-muted-foreground` and dark-toned icons. However, based on the provided diff summary, it’s not fully verifiable that *all* requested screens/routes and *all* remaining purple/near-black surfaces and white text/icons across the entire app have been addressed.",
+  "missing_requirements": [
+    {
+      "id": "REQ-19",
+      "requirement": "Update the global app background so AppShell, LoginPage, AuthGate loading/redirect screens, and all routes consistently use the same medium blue-green gradient (no near-white washout and no purple-heavy gradients).",
+      "reason": "AppShell and AuthGate explicitly use `app-gradient-bg`, and the CSS utility is defined, but the diff content does not include the actual `LoginPage.tsx` change (only a textual summary in `frontend-file-summaries.txt`). Also, routes outside these wrappers cannot be conclusively verified from the truncated/partial diff.",
+      "evidence": [
+        "frontend/src/components/layout/AppShell.tsx",
+        "frontend/src/components/auth/AuthGate.tsx",
+        "frontend/src/index.css",
+        "frontend-file-summaries.txt"
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "requirement": "Make all user-visible text across the app use very dark colors by default (avoid white text), including headings, descriptions, placeholders, tab labels, nav labels, and empty states, while keeping sufficient contrast over the medium blue-green gradient.",
+      "reason": "Several components/pages were updated to use `text-foreground` and `text-muted-foreground`, but the diff does not provide enough source coverage to confirm removal of hardcoded white text across *all pages* and all text types (placeholders, tabs, empty states, etc.).",
+      "evidence": [
+        "frontend/src/components/auth/AuthGate.tsx",
+        "frontend/src/pages/BusinessAnalyticsPage.tsx",
+        "frontend/src/pages/MakerLandingPage.tsx",
+        "frontend/src/pages/ShopMakerPage.tsx",
+        "frontend/src/components/navigation/SidebarNav.tsx",
+        "frontend/src/components/chat/ChatMessageList.tsx",
+        "frontend/src/components/chat/ChatComposer.tsx"
+      ]
+    },
+    {
+      "id": "REQ-21",
+      "requirement": "Ensure all icons use the same dark color style as the text (no white icons), including sidebar navigation icons, header/menu icons, loading spinner/iconography, chat avatars/icons, and gallery card icons.",
+      "reason": "Some icons were explicitly set to `text-foreground` (e.g., AuthGate loader, chat avatars, gallery type icons, AppShell menu icon), but other icons rely on inheritance (e.g., SidebarNav icons have no explicit class; GalleryCard action icons have no explicit dark class). The diff summary is insufficient to verify there are no remaining forced-white icons elsewhere in the app (e.g., header/menu icons outside AppShell, other pages/components not shown).",
+      "evidence": [
+        "frontend/src/components/auth/AuthGate.tsx",
+        "frontend/src/components/layout/AppShell.tsx",
+        "frontend/src/components/chat/ChatMessageList.tsx",
+        "frontend/src/components/gallery/GalleryCard.tsx",
+        "frontend/src/components/navigation/SidebarNav.tsx"
+      ]
+    },
+    {
+      "id": "REQ-22",
+      "requirement": "Remove remaining hard-coded blue/purple gradient styling and overly-dark/black surfaces that conflict with the new unified medium blue-green theme, ensuring cards/panels remain readable without making the app look blank.",
+      "reason": "Some components were adjusted to lighter card tints and blue-green accents, but the diff does not show a comprehensive sweep removing purple-heavy gradients or near-black (`slate-950`-like) panels across the app (e.g., ChatPage and Gallery page/container styling are not included in the diff content; only a summary mentions ChatPage updates). Therefore full compliance cannot be confirmed from the provided evidence.",
+      "evidence": [
+        "frontend/src/components/chat/ChatMessageList.tsx",
+        "frontend/src/components/chat/ChatComposer.tsx",
+        "frontend/src/components/gallery/GalleryCard.tsx",
+        "frontend/src/index.css",
+        "frontend-file-summaries.txt"
+      ]
+    }
+  ],
+  "hallucinated_features": [],
+  "confidence": 0.62,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/src/components/auth/AuthGate.tsx",
+    "frontend/src/components/chat/ChatComposer.tsx",
+    "frontend/src/components/chat/ChatMessageList.tsx",
+    "frontend/src/components/gallery/GalleryCard.tsx",
+    "frontend/src/components/layout/AppShell.tsx",
+    "frontend/src/components/navigation/SidebarNav.tsx",
+    "frontend/src/index.css",
+    "frontend/src/pages/BusinessAnalyticsPage.tsx",
+    "frontend/src/pages/MakerLandingPage.tsx",
+    "frontend/src/pages/ShopMakerPage.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

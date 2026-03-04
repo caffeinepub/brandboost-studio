@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.75rem;
+        /* Medium blue-green theme - light mode */
+        --background: 0.75 0.08 200;
+        --foreground: 0.20 0.03 240;
+        --card: 0.82 0.06 200;
+        --card-foreground: 0.20 0.03 240;
+        --popover: 0.82 0.06 200;
+        --popover-foreground: 0.20 0.03 240;
+        --primary: 0.50 0.12 200;
+        --primary-foreground: 0.15 0.04 240;
+        --secondary: 0.60 0.10 180;
+        --secondary-foreground: 0.15 0.04 240;
+        --muted: 0.70 0.06 200;
+        --muted-foreground: 0.30 0.03 240;
+        --accent: 0.55 0.12 190;
+        --accent-foreground: 0.15 0.04 240;
+        --destructive: 0.577 0.245 27.325;
+        --destructive-foreground: 0.15 0.04 240;
+        --border: 0.50 0.12 200 / 30%;
+        --input: 0.50 0.12 200 / 35%;
+        --ring: 0.50 0.12 200;
+        --chart-1: 0.646 0.222 41.116;
+        --chart-2: 0.6 0.118 184.704;
+        --chart-3: 0.55 0.12 190;
+        --chart-4: 0.828 0.189 84.429;
+        --chart-5: 0.769 0.188 70.08;
+    }
+
+    .dark {
+        /* Medium blue-green theme - dark mode */
+        --background: 0.70 0.08 200;
+        --foreground: 0.18 0.03 240;
+        --card: 0.78 0.06 200;
+        --card-foreground: 0.18 0.03 240;
+        --popover: 0.78 0.06 200;
+        --popover-foreground: 0.18 0.03 240;
+        --primary: 0.45 0.12 200;
+        --primary-foreground: 0.15 0.04 240;
+        --secondary: 0.55 0.10 180;
+        --secondary-foreground: 0.15 0.04 240;
+        --muted: 0.65 0.06 200;
+        --muted-foreground: 0.28 0.03 240;
+        --accent: 0.50 0.12 190;
+        --accent-foreground: 0.15 0.04 240;
+        --destructive: 0.577 0.245 27.325;
+        --destructive-foreground: 0.15 0.04 240;
+        --border: 0.45 0.12 200 / 30%;
+        --input: 0.45 0.12 200 / 35%;
+        --ring: 0.45 0.12 200;
+        --chart-1: 0.646 0.222 41.116;
+        --chart-2: 0.6 0.118 184.704;
+        --chart-3: 0.50 0.12 190;
+        --chart-4: 0.828 0.189 84.429;
+        --chart-5: 0.769 0.188 70.08;
+    }
+
+    * {
+        @apply border-border;
+    }
+    
+    body {
+        @apply bg-background text-foreground;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+}
+
+/* Global medium blue-green gradient background utility */
+.app-gradient-bg {
+    background: linear-gradient(135deg, 
+        oklch(0.72 0.09 200) 0%, 
+        oklch(0.75 0.08 190) 50%, 
+        oklch(0.73 0.09 180) 100%
+    );
+}
+
+/* Glowing CTA button styles */
+.btn-glow {
+    position: relative;
+    background: linear-gradient(135deg, 
+        oklch(0.50 0.12 200) 0%, 
+        oklch(0.55 0.12 190) 100%
+    );
+    box-shadow: 0 4px 20px oklch(0.50 0.12 200 / 0.3);
+    transition: all 0.3s ease;
+}
+
+.btn-glow:hover {
+    background: linear-gradient(135deg, 
+        oklch(0.45 0.14 200) 0%, 
+        oklch(0.50 0.14 190) 100%
+    );
+    box-shadow: 0 6px 30px oklch(0.50 0.12 200 / 0.5);
+    transform: translateY(-2px);
+}
+
+.btn-glow:focus-visible {
+    outline: 2px solid oklch(0.50 0.12 200);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .btn-glow {
+        animation: glow-pulse 2s ease-in-out infinite;
+    }
+}
+
+@keyframes glow-pulse {
+    0%, 100% {
+        box-shadow: 0 4px 20px oklch(0.50 0.12 200 / 0.3);
+    }
+    50% {
+        box-shadow: 0 6px 30px oklch(0.50 0.12 200 / 0.5);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn-glow {
+        animation: none;
+    }
+    .btn-glow:hover {
+        transform: none;
+    }
+}
+
+@keyframes butterfly {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(100px, -50px) rotate(10deg);
+    }
+    50% {
+        transform: translate(200px, 0) rotate(-10deg);
+    }
+    75% {
+        transform: translate(100px, 50px) rotate(5deg);
+    }
+}
+
+.animate-butterfly {
+    animation: butterfly linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-butterfly {
+        animation: none;
+        opacity: 0;
+    }
+}
+
+@keyframes slide {
+    0%, 100% {
+        transform: translateX(-20px);
+    }
+    50% {
+        transform: translateX(20px);
+    }
+}
+
+.animate-slide {
+    animation: slide 3s ease-in-out infinite;
+}
+
+@keyframes zoom {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.animate-zoom {
+    animation: zoom 2s ease-in-out infinite;
+}

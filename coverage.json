@@ -1,0 +1,112 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-16T23:29:01.933Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 4,
+    "implemented": 4,
+    "items": [
+      {
+        "id": "REQ-19",
+        "summary": "Update the global app background so AppShell, LoginPage, AuthGate loading/redirect screens, and all routes consistently use the same medium blue-green gradient (no near-white washout and no purple-heavy gradients).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/index.css",
+          "frontend/src/components/layout/AppShell.tsx",
+          "frontend/src/components/auth/AuthGate.tsx",
+          "frontend/src/pages/LoginPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/src/components/layout/AppShell.tsx",
+          "frontend/src/components/auth/AuthGate.tsx"
+        ]
+      },
+      {
+        "id": "REQ-20",
+        "summary": "Make all user-visible text across the app use very dark colors by default (avoid white text), including headings, descriptions, placeholders, tab labels, nav labels, and empty states, while keeping sufficient contrast over the medium blue-green gradient.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/index.css",
+          "frontend/src/pages/LoginPage.tsx",
+          "frontend/src/pages/BusinessAnalyticsPage.tsx",
+          "frontend/src/pages/MakerLandingPage.tsx",
+          "frontend/src/pages/ShopMakerPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/src/pages/BusinessAnalyticsPage.tsx",
+          "frontend/src/pages/MakerLandingPage.tsx",
+          "frontend/src/pages/ShopMakerPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-21",
+        "summary": "Ensure all icons use the same dark color style as the text (no white icons), including sidebar navigation icons, header/menu icons, loading spinner/iconography, chat avatars/icons, and gallery card icons.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/auth/AuthGate.tsx",
+          "frontend/src/components/navigation/SidebarNav.tsx",
+          "frontend/src/components/layout/AppShell.tsx",
+          "frontend/src/components/chat/ChatMessageList.tsx",
+          "frontend/src/components/gallery/GalleryCard.tsx",
+          "frontend/src/pages/MakerLandingPage.tsx",
+          "frontend/src/pages/ShopMakerPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/auth/AuthGate.tsx",
+          "frontend/src/components/navigation/SidebarNav.tsx",
+          "frontend/src/components/layout/AppShell.tsx",
+          "frontend/src/components/chat/ChatMessageList.tsx",
+          "frontend/src/components/gallery/GalleryCard.tsx",
+          "frontend/src/pages/MakerLandingPage.tsx",
+          "frontend/src/pages/ShopMakerPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-22",
+        "summary": "Remove remaining hard-coded blue/purple gradient styling and overly-dark/black surfaces that conflict with the new unified medium blue-green theme, ensuring cards/panels remain readable without making the app look blank.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/chat/ChatMessageList.tsx",
+          "frontend/src/components/chat/ChatComposer.tsx",
+          "frontend/src/components/gallery/GalleryCard.tsx",
+          "frontend/src/pages/MakerLandingPage.tsx",
+          "frontend/src/index.css"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/chat/ChatMessageList.tsx",
+          "frontend/src/components/chat/ChatComposer.tsx",
+          "frontend/src/components/gallery/GalleryCard.tsx",
+          "frontend/src/pages/MakerLandingPage.tsx",
+          "frontend/src/index.css"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/components/auth/AuthGate.tsx",
+    "frontend/src/components/chat/ChatComposer.tsx",
+    "frontend/src/components/chat/ChatMessageList.tsx",
+    "frontend/src/components/gallery/GalleryCard.tsx",
+    "frontend/src/components/layout/AppShell.tsx",
+    "frontend/src/components/navigation/SidebarNav.tsx",
+    "frontend/src/index.css",
+    "frontend/src/pages/BusinessAnalyticsPage.tsx",
+    "frontend/src/pages/MakerLandingPage.tsx",
+    "frontend/src/pages/ShopMakerPage.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}
